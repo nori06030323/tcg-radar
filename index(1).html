@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#0b1120" />
+<meta name="description" content="トレカレーダーは、ポケモンカードの価格変動やPSA10の比較、トレカのおすすめ商品を紹介する非公式情報サイトです。" />
+<meta property="og:title" content="トレカレーダー | ポケカ相場・PSA10情報" />
+<meta property="og:description" content="ポケカの相場を、もっと賢く。高騰ランキングやPSA10情報をチェック。" />
+<meta property="og:type" content="website" />
+<title>トレカレーダー | ポケカ相場・PSA10情報</title>
+<style>
+:root{--ink:#132039;--muted:#6d7890;--line:#e4e9f3;--base:#f7f9fd;--navy:#0b1329;--navy2:#111e39;--purple:#7c64ff;--lime:#c8f76a;--green:#13956c;--danger:#d34f5b;--white:#fff;--shadow:0 12px 35px rgba(24,37,71,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--base);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic",Meiryo,sans-serif;line-height:1.65}a{color:inherit;text-decoration:none}button,input,select{font:inherit}button{cursor:pointer}.container{width:min(1120px,calc(100% - 42px));margin:0 auto}.tiny{font-size:12px}.muted{color:var(--muted)}
+.notice{background:#edf0fc;color:#53607e;text-align:center;font-size:11px;padding:7px 14px;letter-spacing:.01em}.topbar{background:var(--navy);color:#f4f7ff}.navbar{display:flex;justify-content:space-between;align-items:center;min-height:76px;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:.03em;font-size:21px;white-space:nowrap}.logo{width:35px;height:35px;border-radius:11px;background:linear-gradient(145deg,#c8f76a,#85ded0);display:grid;place-items:center;color:#111e39;font-size:22px;transform:rotate(-7deg);box-shadow:0 0 24px #c8f76a28}.brand span small{display:block;font-size:9px;letter-spacing:.21em;color:#a0b0cb;margin-top:-5px}.navlinks{display:flex;gap:24px;font-weight:700;color:#d9e1f3;font-size:13px}.navlinks a:hover{color:var(--lime)}.navbtn{display:inline-block;border:1px solid #4c5a7a;border-radius:100px;padding:10px 16px;color:#f7faff;font-size:12px;font-weight:800;white-space:nowrap}
+.hero{background:radial-gradient(circle at 72% 28%,#313769 0,transparent 30%),radial-gradient(circle at 25% 90%,#1a2a4d,transparent 35%),var(--navy);color:white;overflow:hidden}.hero-inner{position:relative;display:flex;align-items:center;justify-content:space-between;min-height:366px;padding:37px 0 50px;gap:30px}.hero-copy{max-width:670px;position:relative;z-index:2}.eyebrow{font-weight:800;letter-spacing:.14em;color:var(--lime);font-size:12px;margin:0 0 15px}.hero h1{font-size:clamp(32px,5vw,58px);line-height:1.2;letter-spacing:-.065em;margin:0 0 19px;font-weight:900}.hero h1 em{font-style:normal;color:var(--lime)}.hero p{font-size:14px;color:#b9c6df;max-width:480px;line-height:1.9;margin:0}.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:27px}.btn{border:0;border-radius:12px;background:var(--lime);color:#132038;padding:13px 19px;font-size:13px;font-weight:900;display:inline-flex;align-items:center;justify-content:center;gap:8px}.btn.secondary{border:1px solid #60708f;background:transparent;color:white}.btn:hover{filter:brightness(.96);transform:translateY(-1px)}.hero-art{width:340px;height:265px;flex-shrink:0;position:relative;perspective:800px}.art-card{position:absolute;width:154px;height:211px;border-radius:16px;border:3px solid #d2bbff;box-shadow:0 25px 35px #0509189c,inset 0 0 0 7px #ffffff18;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between;padding:14px;transform:rotate(15deg);background:linear-gradient(150deg,#f9e4ff 0%,#8c66db 30%,#533da8 75%,#191a4c 100%);right:26px;top:10px}.art-card.back{right:115px;top:30px;transform:rotate(-15deg);border-color:#98f1e2;background:linear-gradient(130deg,#e9ffbe,#58baca 45%,#335ac2 90%)}.art-card .star{font-size:58px;line-height:1;text-align:center;filter:drop-shadow(0 4px 8px #13163b66);margin-top:20px}.art-card .cap{border-top:1px solid #ffffff69;color:white;font-weight:900;font-size:11px;padding-top:9px;letter-spacing:.07em}.spark{position:absolute;color:var(--lime);font-size:29px;left:29px;top:12px}.spark.bottom{top:auto;bottom:-6px;left:95px;font-size:19px}.floating-stat{position:absolute;bottom:4px;right:0;background:#e5ffca;color:#19312c;border:1px solid white;box-shadow:0 13px 32px #03091788;padding:11px 15px;border-radius:13px;font-size:13px;font-weight:900;transform:rotate(5deg)}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:-31px;position:relative;z-index:2}.metric{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:17px;padding:18px 21px;display:flex;gap:14px;align-items:center}.metric-icon{width:42px;height:42px;border-radius:13px;display:grid;place-items:center;background:#f0efff;font-size:22px}.metric:nth-child(2) .metric-icon{background:#ebf8f3}.metric:nth-child(3) .metric-icon{background:#fff6df}.metric strong{display:block;font-size:20px;line-height:1.3;letter-spacing:-.02em}.metric small{display:block;color:var(--muted);font-size:11px}.section{padding-top:64px;scroll-margin-top:20px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:22px}.section-label{color:#6357c3;letter-spacing:.14em;font-weight:900;font-size:11px;margin:0 0 5px}.section h2{font-size:clamp(23px,3vw,31px);letter-spacing:-.04em;line-height:1.45;margin:0}.section-summary{color:var(--muted);font-size:12px;margin:6px 0 0}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 11px;color:var(--muted);background:white;font-size:11px;white-space:nowrap}.feature-row{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:0 0 18px}.seg{display:inline-flex;gap:3px;border:1px solid var(--line);background:white;border-radius:12px;padding:4px}.seg button{background:transparent;border:0;color:#5f6980;font-size:12px;padding:8px 14px;border-radius:9px;font-weight:700}.seg button.active{background:#202d4b;color:white}.search{position:relative;display:flex;align-items:center;background:white;border:1px solid var(--line);border-radius:11px;overflow:hidden;margin-left:auto}.search span{padding-left:13px;color:var(--muted)}.search input{padding:11px 12px;border:none;background:transparent;outline:none;min-width:180px;font-size:12px;color:var(--ink)}.pane{background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);border-radius:18px;overflow:hidden}.pane-head{display:grid;grid-template-columns:70px 1fr 128px 128px 116px;gap:12px;padding:14px 22px;background:#f6f8fc;border-bottom:1px solid var(--line);color:#738099;font-size:11px;font-weight:800}.rank-row{display:grid;grid-template-columns:70px 1fr 128px 128px 116px;gap:12px;align-items:center;padding:18px 22px;border-bottom:1px solid #f0f2f6}.rank-row:last-child{border-bottom:0}.rank-index{font-size:18px;font-weight:900;color:#8390a8;display:flex;align-items:center;gap:7px}.rank-index.top{color:#674de9}.rank-index .medal{font-size:22px}.card-name{font-size:14px;font-weight:850;line-height:1.4}.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:5px}.meta span{font-size:10px;color:#64728d;background:#f1f3fa;padding:2px 7px;border-radius:5px}.price-num{font-weight:850;font-size:15px;white-space:nowrap}.price-num.missing{font-size:12px;color:#8a94a7;font-weight:600}.change{font-size:14px;font-weight:900}.change.up{color:var(--green)}.change.down{color:var(--danger)}.change.flat{color:#78849a}.source-link{display:block;color:#6c7690;font-size:10px;margin-top:3px;text-decoration:underline;text-decoration-color:#b8c2d0;text-underline-offset:2px}.empty-state{padding:30px 18px;text-align:center}.empty-icon{margin:auto auto 12px;width:48px;height:48px;border-radius:50%;background:#eef0ff;display:grid;place-items:center;font-size:24px}.empty-state h3{font-size:16px;margin:0 0 8px}.empty-state p{font-size:12px;color:var(--muted);margin:0 auto;max-width:520px;line-height:1.9}.info-strip{display:flex;align-items:start;gap:9px;padding:13px 17px;border:1px solid #e3e9f4;border-radius:12px;background:#f0f4fb;color:#65728a;font-size:11px;margin-top:15px}.info-strip strong{color:#2c3c59}.watchlist{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.watch-card{border:1px solid var(--line);background:#fff;border-radius:15px;padding:16px;display:flex;gap:12px;align-items:center}.mini-art{width:48px;height:62px;border-radius:7px;background:linear-gradient(135deg,#7d71d8,#c6b7ff);flex:none;display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 3px 0 #b2a6ea;font-size:19px}.watch-card:nth-child(2n) .mini-art{background:linear-gradient(135deg,#52bdb0,#1a627b);box-shadow:0 3px 0 #91cbca}.watch-card:nth-child(3n) .mini-art{background:linear-gradient(135deg,#db9a4a,#dd6c86);box-shadow:0 3px 0 #e2b699}.watch-card h3{font-size:12px;margin:0 0 4px;line-height:1.5}.watch-card p{font-size:10px;color:var(--muted);margin:0}
+.psa-panel{display:grid;grid-template-columns:1fr 1fr;gap:18px}.psa-guide{border-radius:18px;background:linear-gradient(135deg,#172448,#172048);padding:28px;color:white;overflow:hidden;position:relative}.psa-guide:after{content:'10';position:absolute;right:9px;bottom:-65px;font-size:240px;font-weight:900;color:#ffffff09;line-height:1}.psa-guide .tag{display:inline-block;background:#c7f66b;color:#183123;border-radius:6px;font-size:10px;font-weight:900;padding:5px 9px}.psa-guide h3{font-size:29px;line-height:1.2;margin:17px 0 13px}.psa-guide p{color:#becae3;font-size:12px;line-height:2;max-width:380px;position:relative;z-index:1}.psa-guide a{display:inline-block;margin-top:9px;color:#d4ff8c;font-size:11px;text-decoration:underline;position:relative;z-index:1}.psa-data{padding:25px;border:1px solid var(--line);background:white;border-radius:18px}.psa-data h3{margin:0 0 6px;font-size:18px}.psa-data p{color:var(--muted);font-size:12px;margin:0 0 16px}.psa-price-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid #edf0f5;gap:8px}.psa-price-row .item{font-weight:800;font-size:12px}.psa-price-row .sub{color:var(--muted);font-size:10px}.psa-price-row .val{font-weight:900;white-space:nowrap;font-size:13px}.psa-note{display:inline-flex;margin-top:15px;background:#f1f3ff;border-radius:8px;padding:8px 10px;font-size:10px;color:#5b5f8f}
+.shop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.shop-card{border:1px solid var(--line);background:white;border-radius:17px;overflow:hidden;box-shadow:var(--shadow)}.shop-visual{height:136px;display:flex;justify-content:center;align-items:center;position:relative;background:radial-gradient(circle at 70% 30%,#f5ddff,#e9e7ff 45%,#ddd9ff);font-size:64px}.shop-card:nth-child(2) .shop-visual{background:radial-gradient(circle at 70% 30%,#e1fff0,#d4eff2 50%,#b8e6df)}.shop-card:nth-child(3) .shop-visual{background:radial-gradient(circle at 70% 30%,#fff4d4,#ffe4c6 45%,#f3dc9a)}.ad-stamp{position:absolute;top:12px;left:12px;border:1px solid #ffffff9c;color:#455273;background:#ffffffdc;font-size:10px;font-weight:900;border-radius:7px;padding:4px 8px}.shop-body{padding:20px}.shop-body h3{font-size:16px;margin:0 0 7px}.shop-body p{font-size:12px;color:var(--muted);min-height:55px;margin:0 0 15px}.shop-link{display:flex;justify-content:center;align-items:center;background:#172642;color:white;font-weight:900;font-size:12px;border-radius:10px;padding:12px 10px}.shop-link.is-disabled{background:#eff2f7;color:#8a95a9;cursor:default}.shop-sub{color:#9aa4b7;font-size:10px;margin-top:10px;text-align:center}.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:19px}.how-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:19px}.how-num{font-weight:900;color:#7259e5;font-size:20px;margin:0}.how-card h3{margin:7px 0 8px;font-size:14px}.how-card p{font-size:11px;color:var(--muted);margin:0;line-height:1.8}.site-info{background:#fff;border:1px solid var(--line);border-radius:16px;padding:23px;margin-top:18px}.site-info h3{font-size:14px;margin:0 0 8px}.site-info p{color:#65748d;font-size:12px;margin:0;line-height:1.9}.footer{margin-top:64px;background:#101a31;color:white;padding:29px 0 23px}.footer-inner{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap}.footer p{color:#a2b0ca;font-size:11px;max-width:610px}.footer h4{margin:0 0 8px}.footer a{text-decoration:underline;text-underline-offset:3px}.footer-end{border-top:1px solid #2a3957;margin-top:25px;padding-top:17px;font-size:10px;color:#8d9cb7}
+.edit-wrap{display:none;background:#f0f0ff;border-bottom:2px solid #c0b3ff}.edit-wrap.open{display:block}.edit-inner{padding:25px 0}.edit-header{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;align-items:center}.edit-header h2{margin:0;font-size:22px}.edit-header p{margin:0;font-size:12px;color:#56627d}.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:18px}.edit-box{background:white;border:1px solid #d9dbf1;padding:18px;border-radius:13px}.edit-box h3{font-size:14px;margin:0 0 12px}.field-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:5px}.field.full{grid-column:1/-1}.field label{font-size:10px;font-weight:800;color:#566078}.field input,.field select{width:100%;border:1px solid #dce1ef;border-radius:8px;background:#fff;color:#27344f;padding:10px;font-size:12px;min-width:0}.edit-action{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}.edit-action button{border:0;border-radius:8px;background:#192748;color:white;font-size:12px;font-weight:800;padding:10px 14px}.edit-action button.alt{background:#edeaff;color:#4637a5}.edit-action button.danger{background:#fff0f1;color:#b6273b}.editor-list{margin-top:15px;max-height:230px;overflow:auto}.editor-list>div{border-top:1px solid #ecedf6;padding:8px 0;display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:12px}.editor-list button{border:1px solid #d3d6e5;background:white;color:#3c4861;border-radius:6px;padding:5px 8px;font-size:10px}.editor-list .buttons{display:flex;gap:5px}.editing-msg{font-size:12px;color:#4b5670;margin:12px 0 0}.admin-tip{margin:10px 0 0;font-size:11px;color:#5f6a83}.admin-tip strong{color:#3b3586}.hidden{display:none!important}
+@media(max-width:900px){.navlinks{display:none}.hero-art{width:265px;transform:scale(.9);transform-origin:center right;margin-right:-28px}.hero h1{font-size:42px}.pane-head,.rank-row{grid-template-columns:50px 1fr 110px 96px;gap:9px}.pane-head span:nth-child(4),.rank-row>.price-prev{display:none}.watchlist{grid-template-columns:repeat(2,1fr)}.editor-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.container{width:calc(100% - 30px)}.notice{text-align:left;font-size:10px;line-height:1.5}.navbar{min-height:64px}.brand{font-size:18px}.logo{width:32px;height:32px}.navbtn{font-size:10px;padding:8px 10px}.hero-inner{min-height:390px;padding:39px 0 42px;align-items:flex-start}.hero-copy{width:100%}.hero h1{font-size:36px;margin-bottom:13px}.hero p{font-size:12px;max-width:300px}.hero-actions{margin-top:22px}.hero-art{position:absolute;right:-98px;bottom:2px;opacity:.55;transform:scale(.69);pointer-events:none}.hero-copy{z-index:3}.metrics{grid-template-columns:repeat(3,1fr);gap:7px;margin-top:-24px}.metric{flex-direction:column;gap:3px;text-align:center;padding:14px 5px;min-height:90px;border-radius:12px}.metric-icon{width:30px;height:30px;font-size:16px;border-radius:8px}.metric strong{font-size:14px}.metric small{font-size:9px}.section{padding-top:48px}.section-head{align-items:flex-start}.section h2{font-size:23px}.section-summary{font-size:11px}.section-head .pill{font-size:10px}.feature-row{display:grid;gap:10px}.seg{width:100%}.seg button{flex:1;padding:9px 4px;font-size:11px}.search{margin:0;width:100%}.search input{width:100%;min-width:0}.pane-head,.rank-row{grid-template-columns:34px 1fr 90px;gap:8px;padding-left:11px;padding-right:11px}.pane-head span:nth-child(5),.rank-row>.change-wrap{display:none}.pane-head{font-size:10px}.rank-row{padding-top:16px;padding-bottom:16px}.rank-index{font-size:14px}.rank-index .medal{font-size:17px}.card-name{font-size:12px}.meta span{font-size:9px}.price-num{font-size:12px}.price-num.missing{font-size:10px}.watchlist{grid-template-columns:1fr 1fr;gap:8px}.watch-card{padding:10px;gap:8px}.watch-card h3{font-size:11px}.mini-art{width:32px;height:45px;font-size:14px}.psa-panel{grid-template-columns:1fr}.psa-guide{padding:24px;min-height:222px}.psa-guide h3{font-size:27px}.psa-data{padding:20px}.shop-grid{grid-template-columns:1fr;gap:12px}.shop-card{display:grid;grid-template-columns:105px 1fr}.shop-visual{height:100%;min-height:170px;font-size:47px}.shop-body{padding:16px}.shop-body p{min-height:0;margin-bottom:10px}.shop-sub{text-align:left}.how-grid{grid-template-columns:1fr}.footer-inner{display:block}.field-grid{grid-template-columns:1fr 1fr}.edit-box{padding:13px}}
+
+/* 2026/11/22 verified weekly data release */
+.method-note{margin-top:10px;color:#6e798f;font-size:11px;line-height:1.85}
+.evidence-link{font-weight:850;color:#4e40ba;text-decoration:underline;text-underline-offset:2px}
+.mobile-change{display:none}
+.weekly-trades{display:block;margin-top:3px;color:#73819a;font-size:10px}
+.feature-row .seg{flex-shrink:0}
+@media(max-width:650px){
+ .pane-head,.rank-row{grid-template-columns:32px 1fr 110px}
+ .rank-row>.price-prev{display:none}
+ .rank-row>.change-wrap{display:none}
+ .mobile-change{display:block;margin-top:4px;font-size:13px;font-weight:900}
+ .mobile-change.up{color:var(--green)}.mobile-change.down{color:var(--danger)}
+ .mobile-change.flat{color:#78849a}
+ .rank-row .price-num{text-align:right}
+ .rank-row .card-name{font-size:12px}
+ .feature-row .seg{width:100%}
+ .weekly-trades{font-size:9px}
+}
+
+/* Historical price archive controls */
+.week-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:14px 0 14px;background:#f3f6fd;padding:14px;border-radius:14px;border:1px solid #dfe5f0}
+.week-controls label{font-weight:750;font-size:13px;color:#283b56}
+.week-controls select{border:1px solid #d8dfe9;background:#fff;color:#1b2c46;font-size:14px;padding:12px 14px;border-radius:10px;min-width:220px;max-width:100%}
+.watch-date{font-size:11px;opacity:.8}
+.archive-banner{border-left:4px solid #5b6698;background:#f3f5fb;color:#304264;padding:12px 14px;border-radius:7px;margin:6px 0 14px;font-size:12px;line-height:1.65}
+@media(max-width:650px){.week-controls{align-items:stretch;flex-direction:column}.week-controls select{width:100%}}
+</style>
+<script id="site-data" type="application/json">
+{
+  "siteTitle": "トレカレーダー",
+  "operator": "運営者名を登録してください",
+  "contact": "",
+  "cards": [
+    {
+      "id": "verified-20261122-mikan",
+      "name": "ミカン SR",
+      "number": "SM8a 058/052",
+      "category": "トレーナーズ",
+      "grade": "PSA10",
+      "pricePast": 28000,
+      "priceNow": 38999,
+      "source": "ポケカるっく（PSA10週間成約中央値）",
+      "sourceUrl": "https://pokecalook.com/cards/91300.html",
+      "asOfDate": "2026-11-22",
+      "weeklyTrades": 42,
+      "period": "2026/11/16〜11/22"
+    },
+    {
+      "id": "verified-20261122-erika",
+      "name": "エリカのおもてなし SR",
+      "number": "SM9 107/095",
+      "category": "トレーナーズ",
+      "grade": "PSA10",
+      "pricePast": 47000,
+      "priceNow": 60000,
+      "source": "ポケカるっく（PSA10週間成約中央値）",
+      "sourceUrl": "https://pokecalook.com/cards/91291.html",
+      "asOfDate": "2026-11-22",
+      "weeklyTrades": 57,
+      "period": "2026/11/16〜11/22"
+    },
+    {
+      "id": "verified-20261122-greninja",
+      "name": "メガゲッコウガex MUR",
+      "number": "M4 120/083",
+      "category": "ポケモン",
+      "grade": "PSA10",
+      "pricePast": 97500,
+      "priceNow": 109899,
+      "source": "ポケカるっく（PSA10週間成約中央値）",
+      "sourceUrl": "https://pokecalook.com/cards/776371.html",
+      "asOfDate": "2026-11-22",
+      "weeklyTrades": 26,
+      "period": "2026/11/16〜11/22"
+    },
+    {
+      "id": "verified-20261122-charizard",
+      "name": "メガリザードンXex MUR",
+      "number": "M2 116/080",
+      "category": "ポケモン",
+      "grade": "PSA10",
+      "pricePast": 340000,
+      "priceNow": 366000,
+      "source": "ポケカるっく（PSA10週間成約中央値）",
+      "sourceUrl": "https://pokecalook.com/cards/704407.html",
+      "asOfDate": "2026-11-22",
+      "weeklyTrades": 29,
+      "period": "2026/11/16〜11/22"
+    },
+    {
+      "name": "ヤドン\u0026コダックGX RR",
+      "number": "SM11 011/094",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 33000,
+      "priceNow": 59750,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sm11-011-094"
+    },
+    {
+      "name": "ヒスイの仲間たち SR",
+      "number": "S12A 249/172",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 10999,
+      "priceNow": 17700,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s12a-249-172"
+    },
+    {
+      "name": "れんげきウーラオスVMAX HR",
+      "number": "S5R 084/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 139000,
+      "priceNow": 185000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s5r-084-070"
+    },
+    {
+      "name": "ニンフィア MA",
+      "number": "SV8A-MA 068/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11275,
+      "priceNow": 15000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sv8a-ma-068-187"
+    },
+    {
+      "name": "ロケット団のクロバットex SAR",
+      "number": "SV10 127/098",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 18850,
+      "priceNow": 23825,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sv10-127-098"
+    },
+    {
+      "name": "ライチュウ\u0026アローラライチュウGX RR",
+      "number": "SM10A 008/054",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 19900,
+      "priceNow": 24500,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sm10a-008-054"
+    },
+    {
+      "name": "オリジンパルキアV SR",
+      "number": "S10P 071/067",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 21700,
+      "priceNow": 26500,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s10p-071-067"
+    },
+    {
+      "name": "そらをとぶピカチュウV RR",
+      "number": "S8A 023/028",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 9499,
+      "priceNow": 11574,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s8a-023-028"
+    },
+    {
+      "name": "ピカチュウ CHR",
+      "number": "S10A 073/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16000,
+      "priceNow": 19495,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s10a-073-071"
+    },
+    {
+      "name": "エーフィ\u0026デオキシスGX SR",
+      "number": "SM12A 177/173",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 112000,
+      "priceNow": 136000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sm12a-177-173"
+    },
+    {
+      "name": "ミュウ（青）",
+      "number": "M6A B/RGB",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 1860000,
+      "priceNow": 1420000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-m6a-b-rgb"
+    },
+    {
+      "name": "リザードン 30th",
+      "number": "M6A 137/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 139000,
+      "priceNow": 112000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-m6a-137-103"
+    },
+    {
+      "name": "ピカチュウex スタートデッキ",
+      "number": "SVM 038/175",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 4993,
+      "priceNow": 4134,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-svm-038-175"
+    },
+    {
+      "name": "ピカチュウ プロモ",
+      "number": "S-P 272/S-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 15900,
+      "priceNow": 13500,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s-p-272-s-p"
+    },
+    {
+      "name": "ラルトス プロモ",
+      "number": "M-P 021/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 5000,
+      "priceNow": 4300,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-m-p-021-m-p"
+    },
+    {
+      "name": "ヒカリ SAR",
+      "number": "M2 115/080",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 9272,
+      "priceNow": 8000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-m2-115-080"
+    },
+    {
+      "name": "ピカチュウ C",
+      "number": "S10B 027/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 5780,
+      "priceNow": 5000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s10b-027-071"
+    },
+    {
+      "name": "ピカチュウex",
+      "number": "MP1 006/23",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 4674,
+      "priceNow": 4084,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-mp1-006-23"
+    },
+    {
+      "name": "いちげきウーラオスVMAX HR",
+      "number": "S5I 085/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 109000,
+      "priceNow": 96000,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-s5i-085-070"
+    },
+    {
+      "name": "リザードンex SR",
+      "number": "SV2A 185/165",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 17100,
+      "priceNow": 15020,
+      "asOfDate": "2026-11-19",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "id": "historic-sv2a-185-165"
+    },
+    {
+      "name": "カヒリ SR",
+      "number": "SM7A 065/060",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 27400,
+      "priceNow": 44400,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sm7a-065-060"
+    },
+    {
+      "name": "アカネ SR",
+      "number": "SM8 101/095",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 25000,
+      "priceNow": 37000,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sm8-101-095"
+    },
+    {
+      "name": "ガラルの仲間たち SR",
+      "number": "S8B 258/184",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 10082,
+      "priceNow": 14264,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s8b-258-184"
+    },
+    {
+      "name": "ピカチュウ R",
+      "number": "S10B 028/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11400,
+      "priceNow": 15250,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s10b-028-071"
+    },
+    {
+      "name": "ピカチュウ プロモ",
+      "number": "SV-P 291/SV-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6200,
+      "priceNow": 8018,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sv-p-291-sv-p"
+    },
+    {
+      "name": "バシャーモVMAX HR",
+      "number": "S5A 086/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 132000,
+      "priceNow": 168000,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s5a-086-070"
+    },
+    {
+      "name": "リザードンex SSR",
+      "number": "SV4A 331/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 9450,
+      "priceNow": 11940,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sv4a-331-190"
+    },
+    {
+      "name": "ラティアス\u0026ラティオスGX RR",
+      "number": "SM9 060/095",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16550,
+      "priceNow": 20500,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sm9-060-095"
+    },
+    {
+      "name": "レックウザGX RR",
+      "number": "SM8B 098/150",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 13000,
+      "priceNow": 10000,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sm8b-098-150"
+    },
+    {
+      "name": "ニンフィアV CSR",
+      "number": "S8B 231/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27250,
+      "priceNow": 24125,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s8b-231-184"
+    },
+    {
+      "name": "アルセウスV プロモ",
+      "number": "S-P 267/S-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 10485,
+      "priceNow": 9340,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s-p-267-s-p"
+    },
+    {
+      "name": "リーリエの決心 SR",
+      "number": "M1L 086/063",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 16750,
+      "priceNow": 15000,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-m1l-086-063"
+    },
+    {
+      "name": "エーフィ MA",
+      "number": "SV8A-MA 062/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12000,
+      "priceNow": 10750,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sv8a-ma-062-187"
+    },
+    {
+      "name": "ニンフィアVMAX RRR",
+      "number": "S8B 075/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6140,
+      "priceNow": 5500,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s8b-075-184"
+    },
+    {
+      "name": "ミュウツー Classic",
+      "number": "CLK 014/032",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16750,
+      "priceNow": 15025,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-clk-014-032"
+    },
+    {
+      "name": "ヒトカゲ S",
+      "number": "SV4A 210/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 8888,
+      "priceNow": 7980,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-sv4a-210-190"
+    },
+    {
+      "name": "ニンフィアVMAX CSR",
+      "number": "S8B 232/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28400,
+      "priceNow": 25550,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s8b-232-184"
+    },
+    {
+      "name": "バンギラスV SR",
+      "number": "S5I 077/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 169000,
+      "priceNow": 152000,
+      "asOfDate": "2026-11-12",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "id": "historic-s5i-077-070"
+    },
+    {
+      "name": "フウロ プロモ",
+      "number": "XY-P 164/XY-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 122000,
+      "priceNow": 169000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-xy-p-164-xy-p"
+    },
+    {
+      "name": "リーリエ プロモ",
+      "number": "SM-P 080/SM-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 222000,
+      "priceNow": 294000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-sm-p-080-sm-p"
+    },
+    {
+      "name": "キハダ SAR",
+      "number": "SV1A 099/073",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 15000,
+      "priceNow": 19250,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-sv1a-099-073"
+    },
+    {
+      "name": "アセロラのいたずら SR",
+      "number": "M1S 084/063",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 11850,
+      "priceNow": 14550,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m1s-084-063"
+    },
+    {
+      "name": "クララ SR",
+      "number": "S5A 082/070",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 20500,
+      "priceNow": 24999,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-s5a-082-070"
+    },
+    {
+      "name": "エリカの招待 SR",
+      "number": "SV2A 196/165",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 16200,
+      "priceNow": 19450,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-sv2a-196-165"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 132/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 169000,
+      "priceNow": 95000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m-p-132-m-p"
+    },
+    {
+      "name": "ライコウex SAR",
+      "number": "M6 108/076",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28608,
+      "priceNow": 19500,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m6-108-076"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 131/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 136000,
+      "priceNow": 94000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m-p-131-m-p"
+    },
+    {
+      "name": "ミュウex FUR",
+      "number": "M6A 135/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 93122,
+      "priceNow": 71499,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m6a-135-103"
+    },
+    {
+      "name": "スリープ AR",
+      "number": "SV1V 086/078",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11048,
+      "priceNow": 8700,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-sv1v-086-078"
+    },
+    {
+      "name": "ピカチュウex SAR",
+      "number": "M6A 127/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 99999,
+      "priceNow": 80000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m6a-127-103"
+    },
+    {
+      "name": "ミュウツー\u0026ミュウGX RR",
+      "number": "SM11 029/094",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 30273,
+      "priceNow": 24300,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-sm11-029-094"
+    },
+    {
+      "name": "ミュウツーex FUR",
+      "number": "M6A 134/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 90000,
+      "priceNow": 74500,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m6a-134-103"
+    },
+    {
+      "name": "ピカチュウex SAR",
+      "number": "M6A 126/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 94900,
+      "priceNow": 79000,
+      "asOfDate": "2026-11-05",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "id": "historic-m6a-126-103"
+    },
+    {
+      "name": "ピカチュウV CSR",
+      "number": "S8B 222/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 34450,
+      "priceNow": 47495,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s8b-222-184"
+    },
+    {
+      "name": "ロケット団のニャース AR",
+      "number": "SV10 109/098",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 7281,
+      "priceNow": 9900,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv10-109-098"
+    },
+    {
+      "name": "ポケモンセンターのお姉さん プロモ",
+      "number": "S-P 069/S-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 45650,
+      "priceNow": 59800,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s-p-069-s-p"
+    },
+    {
+      "name": "ピカチュウex SR",
+      "number": "SV8 122/106",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 18375,
+      "priceNow": 22750,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv8-122-106"
+    },
+    {
+      "name": "コライドンex SAR",
+      "number": "SV1S 103/078",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12466,
+      "priceNow": 15425,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv1s-103-078"
+    },
+    {
+      "name": "イーブイGX SR",
+      "number": "SM12A 187/173",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27150,
+      "priceNow": 33000,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sm12a-187-173"
+    },
+    {
+      "name": "スターミーV CSR",
+      "number": "S9A 083/067",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 36245,
+      "priceNow": 43350,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s9a-083-067"
+    },
+    {
+      "name": "ゼラオラVSTAR SAR",
+      "number": "S12A 220/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6500,
+      "priceNow": 7725,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s12a-220-172"
+    },
+    {
+      "name": "イーブイ AR",
+      "number": "MC 755/742",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 46500,
+      "priceNow": 37450,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-mc-755-742"
+    },
+    {
+      "name": "なみのりピカチュウVMAX RRR",
+      "number": "S8A 022/028",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12933,
+      "priceNow": 10650,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s8a-022-028"
+    },
+    {
+      "name": "ルカリオVSTAR SAR",
+      "number": "S12A 226/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12450,
+      "priceNow": 10380,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s12a-226-172"
+    },
+    {
+      "name": "ニンフィアex SAR",
+      "number": "SV8A 212/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27400,
+      "priceNow": 22899,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv8a-212-187"
+    },
+    {
+      "name": "ゼラオラVMAX SAR",
+      "number": "S12A 219/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 7850,
+      "priceNow": 6650,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-s12a-219-172"
+    },
+    {
+      "name": "ニャース プロモ",
+      "number": "SV-P 192/SV-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 23152,
+      "priceNow": 19775,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv-p-192-sv-p"
+    },
+    {
+      "name": "ピカチュウ S",
+      "number": "SV4A 236/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 29199,
+      "priceNow": 25000,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv4a-236-190"
+    },
+    {
+      "name": "サンダーex SAR",
+      "number": "SV2A 204/165",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28000,
+      "priceNow": 24000,
+      "asOfDate": "2026-10-29",
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "id": "historic-sv2a-204-165"
+    }
+  ],
+  "ads": [
+    {
+      "title": "ポケカBOX保護ケース 5個セット",
+      "description": "未開封のポケモンカードBOXを保管するセミハードケース。カードBOX本体は付属しません。購入前にサイズやセット内容をご確認ください。",
+      "emoji": "📦",
+      "url": "https://hb.afl.rakuten.co.jp/ichiba/59dac4c8.ffdae0ad.59dac4c9.c73695c1/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Frimina%2Fr-182ocshk01-5%2F\u0026link_type=picttext\u0026ut=eyJwYWdlIjoiaXRlbSIsInR5cGUiOiJwaWN0dGV4dCIsInNpemUiOiIyNDB4MjQwIiwibmFtIjoxLCJuYW1wIjoicmlnaHQiLCJjb20iOjEsImNvbXAiOiJkb3duIiwicHJpY2UiOjEsImJvciI6MSwiY29sIjoxLCJiYnRuIjoxLCJwcm9kIjowLCJhbXAiOmZhbHNlfQ%3D%3D",
+      "provider": "楽天市場"
+    },
+    {
+      "title": "PSA10保管用品",
+      "description": "PSAケースやコレクションを美しく保管するアイテムを紹介。",
+      "emoji": "🛡️",
+      "url": "",
+      "provider": "楽天市場"
+    },
+    {
+      "title": "トレカ買取サービス",
+      "description": "不要になったカードの整理・買取サービスを紹介できます。",
+      "emoji": "💎",
+      "url": "",
+      "provider": "提携広告"
+    }
+  ],
+  "marketInfo": {
+    "week": "2026/11/16〜11/22",
+    "snapshot": "2026/11/22 08:48 JST",
+    "method": "PSA10鑑定品の直近7日間と前週7日間の成約中央値を比較。公表データの個別カードページにある金額・前週比と照合。",
+    "weeklyUrl": "https://pokecalook.com/articles/weekly-rising.html",
+    "historyNotice": "過去週の値は現在価格ではありません。各週の確定値の出典ページをご確認ください。"
+  },
+  "weeklyArchive": [
+    {
+      "name": "ヤドン\u0026コダックGX RR",
+      "number": "SM11 011/094",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 33000,
+      "priceNow": 59750,
+      "percentPublished": 81.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ヒスイの仲間たち SR",
+      "number": "S12A 249/172",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 10999,
+      "priceNow": 17700,
+      "percentPublished": 60.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "れんげきウーラオスVMAX HR",
+      "number": "S5R 084/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 139000,
+      "priceNow": 185000,
+      "percentPublished": 33.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ニンフィア MA",
+      "number": "SV8A-MA 068/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11275,
+      "priceNow": 15000,
+      "percentPublished": 33.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ロケット団のクロバットex SAR",
+      "number": "SV10 127/098",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 18850,
+      "priceNow": 23825,
+      "percentPublished": 26.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ライチュウ\u0026アローラライチュウGX RR",
+      "number": "SM10A 008/054",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 19900,
+      "priceNow": 24500,
+      "percentPublished": 23.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "オリジンパルキアV SR",
+      "number": "S10P 071/067",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 21700,
+      "priceNow": 26500,
+      "percentPublished": 22.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "そらをとぶピカチュウV RR",
+      "number": "S8A 023/028",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 9499,
+      "priceNow": 11574,
+      "percentPublished": 21.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ピカチュウ CHR",
+      "number": "S10A 073/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16000,
+      "priceNow": 19495,
+      "percentPublished": 21.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "エーフィ\u0026デオキシスGX SR",
+      "number": "SM12A 177/173",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 112000,
+      "priceNow": 136000,
+      "percentPublished": 21.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ミュウ（青）",
+      "number": "M6A B/RGB",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 1860000,
+      "priceNow": 1420000,
+      "percentPublished": -23.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "リザードン 30th",
+      "number": "M6A 137/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 139000,
+      "priceNow": 112000,
+      "percentPublished": -19.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ピカチュウex スタートデッキ",
+      "number": "SVM 038/175",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 4993,
+      "priceNow": 4134,
+      "percentPublished": -17.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ピカチュウ プロモ",
+      "number": "S-P 272/S-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 15900,
+      "priceNow": 13500,
+      "percentPublished": -15.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ラルトス プロモ",
+      "number": "M-P 021/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 5000,
+      "priceNow": 4300,
+      "percentPublished": -14.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ヒカリ SAR",
+      "number": "M2 115/080",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 9272,
+      "priceNow": 8000,
+      "percentPublished": -13.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ピカチュウ C",
+      "number": "S10B 027/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 5780,
+      "priceNow": 5000,
+      "percentPublished": -13.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "ピカチュウex",
+      "number": "MP1 006/23",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 4674,
+      "priceNow": 4084,
+      "percentPublished": -12.6,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "いちげきウーラオスVMAX HR",
+      "number": "S5I 085/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 109000,
+      "priceNow": 96000,
+      "percentPublished": -12.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "リザードンex SR",
+      "number": "SV2A 185/165",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 17100,
+      "priceNow": 15020,
+      "percentPublished": -12.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-19",
+      "period": "2026/11/13〜11/19",
+      "asOfDate": "2026-11-19"
+    },
+    {
+      "name": "カヒリ SR",
+      "number": "SM7A 065/060",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 27400,
+      "priceNow": 44400,
+      "percentPublished": 62.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "アカネ SR",
+      "number": "SM8 101/095",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 25000,
+      "priceNow": 37000,
+      "percentPublished": 48.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ミカン SR",
+      "number": "SM8A 058/052",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 28200,
+      "priceNow": 40250,
+      "percentPublished": 42.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ガラルの仲間たち SR",
+      "number": "S8B 258/184",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 10082,
+      "priceNow": 14264,
+      "percentPublished": 41.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ピカチュウ R",
+      "number": "S10B 028/071",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11400,
+      "priceNow": 15250,
+      "percentPublished": 33.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "エリカのおもてなし SR",
+      "number": "SM9 107/095",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 45900,
+      "priceNow": 59725,
+      "percentPublished": 30.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ピカチュウ プロモ",
+      "number": "SV-P 291/SV-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6200,
+      "priceNow": 8018,
+      "percentPublished": 29.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "バシャーモVMAX HR",
+      "number": "S5A 086/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 132000,
+      "priceNow": 168000,
+      "percentPublished": 27.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "リザードンex SSR",
+      "number": "SV4A 331/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 9450,
+      "priceNow": 11940,
+      "percentPublished": 26.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ラティアス\u0026ラティオスGX RR",
+      "number": "SM9 060/095",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16550,
+      "priceNow": 20500,
+      "percentPublished": 23.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "レックウザGX RR",
+      "number": "SM8B 098/150",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 13000,
+      "priceNow": 10000,
+      "percentPublished": -23.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ニンフィアV CSR",
+      "number": "S8B 231/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27250,
+      "priceNow": 24125,
+      "percentPublished": -11.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "アルセウスV プロモ",
+      "number": "S-P 267/S-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 10485,
+      "priceNow": 9340,
+      "percentPublished": -10.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "リーリエの決心 SR",
+      "number": "M1L 086/063",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 16750,
+      "priceNow": 15000,
+      "percentPublished": -10.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "エーフィ MA",
+      "number": "SV8A-MA 062/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12000,
+      "priceNow": 10750,
+      "percentPublished": -10.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ニンフィアVMAX RRR",
+      "number": "S8B 075/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6140,
+      "priceNow": 5500,
+      "percentPublished": -10.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ミュウツー Classic",
+      "number": "CLK 014/032",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 16750,
+      "priceNow": 15025,
+      "percentPublished": -10.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ヒトカゲ S",
+      "number": "SV4A 210/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 8888,
+      "priceNow": 7980,
+      "percentPublished": -10.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "ニンフィアVMAX CSR",
+      "number": "S8B 232/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28400,
+      "priceNow": 25550,
+      "percentPublished": -10.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "バンギラスV SR",
+      "number": "S5I 077/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 169000,
+      "priceNow": 152000,
+      "percentPublished": -9.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-12",
+      "period": "2026/11/06〜11/12",
+      "asOfDate": "2026-11-12"
+    },
+    {
+      "name": "フウロ プロモ",
+      "number": "XY-P 164/XY-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 122000,
+      "priceNow": 169000,
+      "percentPublished": 37.6,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ライチュウ\u0026アローラライチュウGX RR",
+      "number": "SM10A 008/054",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 13200,
+      "priceNow": 18000,
+      "percentPublished": 36.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "リーリエ プロモ",
+      "number": "SM-P 080/SM-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 222000,
+      "priceNow": 294000,
+      "percentPublished": 32.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "キハダ SAR",
+      "number": "SV1A 099/073",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 15000,
+      "priceNow": 19250,
+      "percentPublished": 28.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "アセロラのいたずら SR",
+      "number": "M1S 084/063",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 11850,
+      "priceNow": 14550,
+      "percentPublished": 22.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "カヒリ SR",
+      "number": "SM7A 065/060",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 22375,
+      "priceNow": 27400,
+      "percentPublished": 22.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "クララ SR",
+      "number": "S5A 082/070",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 20500,
+      "priceNow": 24999,
+      "percentPublished": 21.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ラティアス\u0026ラティオスGX RR",
+      "number": "SM9 060/095",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 13625,
+      "priceNow": 16550,
+      "percentPublished": 21.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "エリカの招待 SR",
+      "number": "SV2A 196/165",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 16200,
+      "priceNow": 19450,
+      "percentPublished": 20.1,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "バンギラスV SR",
+      "number": "S5I 077/070",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 141000,
+      "priceNow": 169000,
+      "percentPublished": 19.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 132/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 169000,
+      "priceNow": 95000,
+      "percentPublished": -43.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ライコウex SAR",
+      "number": "M6 108/076",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28608,
+      "priceNow": 19500,
+      "percentPublished": -31.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 131/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 136000,
+      "priceNow": 94000,
+      "percentPublished": -31.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ミュウex FUR",
+      "number": "M6A 135/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 93122,
+      "priceNow": 71499,
+      "percentPublished": -23.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "スリープ AR",
+      "number": "SV1V 086/078",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 11048,
+      "priceNow": 8700,
+      "percentPublished": -21.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ピカチュウex SAR",
+      "number": "M6A 127/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 99999,
+      "priceNow": 80000,
+      "percentPublished": -20.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "リザードン 30th",
+      "number": "M6A 137/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 185000,
+      "priceNow": 148000,
+      "percentPublished": -19.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ミュウツー\u0026ミュウGX RR",
+      "number": "SM11 029/094",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 30273,
+      "priceNow": 24300,
+      "percentPublished": -19.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ミュウツーex FUR",
+      "number": "M6A 134/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 90000,
+      "priceNow": 74500,
+      "percentPublished": -17.2,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ピカチュウex SAR",
+      "number": "M6A 126/103",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 94900,
+      "priceNow": 79000,
+      "percentPublished": -16.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-11-05",
+      "period": "2026/10/30〜11/05",
+      "asOfDate": "2026-11-05"
+    },
+    {
+      "name": "ニンフィアV CSR",
+      "number": "S8B 231/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 14985,
+      "priceNow": 26750,
+      "percentPublished": 78.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ミュウツー\u0026ミュウGX RR",
+      "number": "SM11 029/094",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 20066,
+      "priceNow": 30273,
+      "percentPublished": 50.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ピカチュウV CSR",
+      "number": "S8B 222/184",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 34450,
+      "priceNow": 47495,
+      "percentPublished": 37.9,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ロケット団のニャース AR",
+      "number": "SV10 109/098",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 7281,
+      "priceNow": 9900,
+      "percentPublished": 36.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ポケモンセンターのお姉さん プロモ",
+      "number": "S-P 069/S-P",
+      "grade": "PSA10",
+      "category": "トレーナーズ",
+      "pricePast": 45650,
+      "priceNow": 59800,
+      "percentPublished": 31.0,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ピカチュウex SR",
+      "number": "SV8 122/106",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 18375,
+      "priceNow": 22750,
+      "percentPublished": 23.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "コライドンex SAR",
+      "number": "SV1S 103/078",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12466,
+      "priceNow": 15425,
+      "percentPublished": 23.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "イーブイGX SR",
+      "number": "SM12A 187/173",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27150,
+      "priceNow": 33000,
+      "percentPublished": 21.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "スターミーV CSR",
+      "number": "S9A 083/067",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 36245,
+      "priceNow": 43350,
+      "percentPublished": 19.6,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ゼラオラVSTAR SAR",
+      "number": "S12A 220/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 6500,
+      "priceNow": 7725,
+      "percentPublished": 18.8,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 131/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 209000,
+      "priceNow": 137000,
+      "percentPublished": -34.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "イーブイ AR",
+      "number": "MC 755/742",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 46500,
+      "priceNow": 37450,
+      "percentPublished": -19.5,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "なみのりピカチュウVMAX RRR",
+      "number": "S8A 022/028",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12933,
+      "priceNow": 10650,
+      "percentPublished": -17.7,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ルカリオVSTAR SAR",
+      "number": "S12A 226/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 12450,
+      "priceNow": 10380,
+      "percentPublished": -16.6,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ニンフィアex SAR",
+      "number": "SV8A 212/187",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 27400,
+      "priceNow": 22899,
+      "percentPublished": -16.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ゼラオラVMAX SAR",
+      "number": "S12A 219/172",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 7850,
+      "priceNow": 6650,
+      "percentPublished": -15.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ニャース プロモ",
+      "number": "SV-P 192/SV-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 23152,
+      "priceNow": 19775,
+      "percentPublished": -14.6,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ピカチュウ S",
+      "number": "SV4A 236/190",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 29199,
+      "priceNow": 25000,
+      "percentPublished": -14.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "ピカチュウex プロモ",
+      "number": "M-P 132/M-P",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 198000,
+      "priceNow": 169000,
+      "percentPublished": -14.4,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    },
+    {
+      "name": "サンダーex SAR",
+      "number": "SV2A 204/165",
+      "grade": "PSA10",
+      "category": "ポケモン",
+      "pricePast": 28000,
+      "priceNow": 24000,
+      "percentPublished": -14.3,
+      "source": "トレギャラ・週間レポート（PSA10成約中央値）",
+      "sourceUrl": "https://toregyara.com/column/weekly-2026-10-29",
+      "period": "2026/10/23〜10/29",
+      "asOfDate": "2026-10-29"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<div class="notice">PR / このサイトはアフィリエイト広告を利用しています。広告経由の購入等で運営者が紹介報酬を受け取ることがあります。</div>
+<div class="edit-wrap" id="editor">
+ <div class="container edit-inner">
+  <div class="edit-header"><div><h2>🛠 運営者用・編集画面</h2><p>ここでの変更は公開サイトに直接反映されません。編集後に「公開用HTMLを保存」して再アップロードします。</p></div><button class="btn" id="exportBtn">⬇ 公開用HTMLを保存</button></div>
+  <p class="admin-tip"><strong>安全上の注意：</strong>この画面はパスワード認証ではありません。ただし閲覧者が操作しても公開中のサーバーは書き換わりません。個人情報や秘密鍵は入力しないでください。</p>
+  <div class="editor-grid">
+   <div class="edit-box">
+    <h3>① カード相場・高騰ランキングを編集</h3>
+    <div class="field-grid">
+     <div class="field full"><label>カード名</label><input id="e-name" placeholder="例：ナンジャモ SAR" /></div>
+     <div class="field"><label>カード番号（完全一致の識別に推奨）</label><input id="e-number" placeholder="例：096/071" /></div>
+     <div class="field"><label>分類</label><select id="e-category"><option>トレーナーズ</option><option>ポケモン</option><option>その他</option></select></div>
+     <div class="field"><label>状態・グレード</label><select id="e-grade"><option>PSA10</option><option>未鑑定</option></select></div>
+     <div class="field"><label>前週7日間の中央値（円）</label><input type="number" min="1" step="1" id="e-past" placeholder="空欄可" /></div>
+     <div class="field"><label>直近7日間の中央値（円）</label><input type="number" min="1" step="1" id="e-now" placeholder="空欄可" /></div>
+     <div class="field"><label>確認日</label><input type="date" id="e-date" /></div>
+     <div class="field"><label>価格の出典（必須）</label><input id="e-source" placeholder="例：販売成約履歴" /></div>
+     <div class="field full"><label>価格の出典URL（推奨）</label><input type="url" id="e-source-url" placeholder="https://..." /></div>
+    </div>
+    <div class="edit-action"><button id="saveCard">カードを保存</button><button class="alt" id="clearCard">入力をクリア</button></div>
+    <div class="editor-list" id="editorCards"></div>
+   </div>
+   <div>
+    <div class="edit-box">
+     <h3>② 商品広告リンクを設定</h3>
+     <div class="field-grid">
+      <div class="field full"><label>広告枠</label><select id="ad-select"><option value="0">1. 人気のポケカBOX</option><option value="1">2. PSA10保管用品</option><option value="2">3. トレカ買取サービス</option></select></div>
+      <div class="field full"><label>見出し</label><input id="ad-title" /></div>
+      <div class="field full"><label>説明</label><input id="ad-desc" /></div>
+      <div class="field full"><label>広告主または掲載元</label><input id="ad-provider" /></div>
+      <div class="field full"><label>あなた専用のアフィリエイトURL（https://）</label><input id="ad-url" type="url" placeholder="提携後のURLを貼り付け" /></div>
+     </div>
+     <div class="edit-action"><button id="saveAd">広告設定を保存</button></div>
+    </div>
+    <div class="edit-box" style="margin-top:16px">
+     <h3>③ 運営者情報</h3>
+     <div class="field-grid">
+      <div class="field full"><label>運営者名・屋号</label><input id="site-operator" /></div>
+      <div class="field full"><label>連絡先メール（公開されます。任意）</label><input id="site-contact" type="email" placeholder="example@example.com" /></div>
+     </div>
+     <div class="edit-action"><button id="saveOperator">運営者情報を保存</button></div>
+    </div>
+    <p class="editing-msg" id="editorMsg">💡 相場は同じカード番号・状態・グレードで、同じ集計方法の価格を比較してください。高騰率は自動計算します。</p>
+   </div>
+  </div>
+ </div>
+</div>
+<header class="topbar"><div class="container navbar"><a class="brand" href="#top"><span class="logo">↗</span><span>トレカレーダー<small>TCG RADAR / FAN SITE</small></span></a><nav class="navlinks"><a href="#ranking">高騰ランキング</a><a href="#psa">PSA10情報</a><a href="#shop">おすすめ商品</a><a href="#guide">サイトについて</a></nav><a class="navbtn" href="#shop">おすすめ商品を見る ↗</a></div></header>
+<main id="top">
+<section class="hero"><div class="container hero-inner"><div class="hero-copy"><p class="eyebrow">POKÉMON CARD MARKET WATCH</p><h1>ポケカの相場を、<br /><em>もっと賢く。</em></h1><p>高騰ランキングも、PSA10の価格比較も。<br />気になるカードを見つけるためのトレカ情報サイト。</p><div class="hero-actions"><a class="btn" href="#ranking">↗ 高騰ランキングを見る</a><a class="btn secondary" href="#psa">PSA10をチェック →</a></div></div><div class="hero-art" aria-hidden="true"><div class="spark">✦</div><div class="art-card back"><span class="star">✶</span><span class="cap">COLLECT / PLAY</span></div><div class="art-card"><span class="star">✧</span><span class="cap">ULTRA RARE / CARD</span></div><div class="spark bottom">✦</div><div class="floating-stat">↗ PRICE WATCH</div></div></div></section>
+<div class="container metrics"><div class="metric"><div class="metric-icon">📈</div><div><strong id="metric-priced">0件</strong><small>価格記録のある銘柄</small></div></div><div class="metric"><div class="metric-icon">💎</div><div><strong id="metric-psa">0件</strong><small>PSA10の登録銘柄</small></div></div><div class="metric"><div class="metric-icon">🔎</div><div><strong id="metric-total">0件</strong><small>ウォッチ対象カード</small></div></div></div>
+<section class="container section" id="ranking"><div class="section-head"><div><p class="section-label">MARKET RANKING</p><h2>📈 ポケカ高騰ランキング</h2><p class="section-summary"><span id="market-description">確認できた週ごとに比較し、過去週の価格を最新値として混ぜずに表示します。</span></p></div><span class="pill" id="market-datestamp">データ確認中</span></div><div class="week-controls"><label for="weekSelect">比較期間を選択</label><select id="weekSelect" aria-label="比較期間"><option value="latest">最新の確認済み（11/22）</option><option value="2026/11/13〜11/19">2026/11/13〜11/19（過去週）</option><option value="2026/11/06〜11/12">2026/11/06〜11/12（過去週）</option><option value="2026/10/30〜11/05">2026/10/30〜11/05（過去週）</option><option value="2026/10/23〜10/29">2026/10/23〜10/29（過去週）</option></select><div class="seg" id="directionFilter"><button data-direction="up" class="active" type="button">上昇</button><button data-direction="down" type="button">下落</button><button data-direction="all" type="button">すべて</button></div></div><div class="feature-row"><div class="seg" id="categoryFilter"><button class="active" data-cat="すべて">すべて</button><button data-cat="トレーナーズ">トレーナーズ</button><button data-cat="ポケモン">ポケモン</button></div><div class="seg" id="sortFilter" aria-label="ランキングの並び順"><button class="active" data-sort="percent" type="button">上昇率順</button><button data-sort="yen" type="button">上昇額順</button></div><div class="search"><span>⌕</span><input id="search" aria-label="カード名を検索" placeholder="カード名・番号で検索" /></div></div><div class="pane"><div class="pane-head"><span>順位</span><span>カード / 状態</span><span>直近週中央値</span><span>前週中央値</span><span>変動率</span></div><div id="rankingRows"></div></div><div class="info-strip"><span>ⓘ</span><div><strong>データの読み方</strong>：表示価格は各カードのPSA10成約価格（直近7日中央値）の参考値です。前週7日中央値との差を比較します。最終出典更新日とURLをカード別に確認してください。<strong>毎日の自動更新は、データの再利用許諾およびGitHub連携の設定後に開始されます。</strong> 最安出品額や買取保証額ではありません。<a class="evidence-link" href="https://pokecalook.com/articles/weekly-rising.html" target="_blank" rel="noopener noreferrer">元の週間レポート ↗</a></div></div><div class="method-note" id="market-status">初期の確認済み価格は2026/11/22時点です。価格は自動取得中とは限りません。</div><h3 style="font-size:16px;margin:26px 0 0">👀 ウォッチリスト <span class="muted tiny" style="font-weight:normal">（73銘柄・過去の成約価格は当時の参考値）</span></h3><div class="watchlist" id="watchlist"></div></section>
+<section class="container section" id="psa"><div class="section-head"><div><p class="section-label">GRADED CARD GUIDE</p><h2>💎 PSA10カード情報</h2><p class="section-summary">鑑定品の価格も、カード番号まで揃えて比較。</p></div></div><div class="psa-panel"><div class="psa-guide"><span class="tag">PSA GRADED CARD</span><h3>PSA 10<br />GEM MINT</h3><p>PSA10はPSAの鑑定基準における最高評価です。ただし市場価格は変動し、PSA10でもケースの状態などは個別に確認する必要があります。</p><a href="https://www.psacard.com/ja-JP/gradingstandards" target="_blank" rel="noopener noreferrer">PSA公式のグレーディング基準 ↗</a></div><div class="psa-data"><h3>PSA10 価格ウォッチ</h3><p>確認済みのPSA10データを表示します。自動更新状況はランキング欄で確認できます。</p><div id="psaRows"></div><div class="psa-note">🔍 同一カード番号・同一グレードの比較が基本です</div></div></div></section>
+<section class="container section" id="shop"><div class="section-head"><div><p class="section-label">SHOP & RECOMMENDS</p><h2>🛒 おすすめ商品・サービス</h2><p class="section-summary">買い物やコレクションに役立つ商品をまとめています。</p></div><span class="pill">PR / 広告掲載欄</span></div><div class="shop-grid" id="adsGrid"></div><div class="info-strip"><span>ⓘ</span><div>掲載商品にはアフィリエイト広告が含まれます。各商品の販売条件・仕様はリンク先でご確認ください。広告リンクがない商品枠はクリックできません。広告が成果条件を満たした場合に紹介報酬が発生することがあります。</div></div></section>
+<section class="container section" id="guide"><div class="section-head"><div><p class="section-label">ABOUT THIS SITE</p><h2>サイトの使い方</h2><p class="section-summary">価格データの透明性を大切にする非公式のカード情報サイトです。</p></div></div><div class="how-grid"><article class="how-card"><p class="how-num">01</p><h3>カードを見つける</h3><p>トレーナーズ・ポケモンの分類、カード名、カード番号で絞り込めます。</p></article><article class="how-card"><p class="how-num">02</p><h3>価格の出典を確認</h3><p>同じカードの同じ状態を比較し、掲載元と確認日をチェックしましょう。</p></article><article class="how-card"><p class="how-num">03</p><h3>商品情報を確認</h3><p>広告リンクから外部ショップへ移動する際は販売条件や価格を再確認してください。</p></article></div><div class="site-info"><h3>運営者情報・プライバシーについて</h3><p id="operatorInfo"></p><p style="margin-top:9px">当サイトは非公式のファン向け情報サイトであり、株式会社ポケモン、任天堂、PSAとは提携・公認関係にありません。掲載データは投資・購入の成果を保証するものではありません。サイトに入力フォームによる個人情報の送信機能はありませんが、ホスティング事業者および広告配信事業者は、それぞれのポリシーに従いアクセス情報やCookie等を扱う場合があります。広告掲載後は各広告サービスの規定に合わせて本記載を更新してください。</p></div></section>
+</main>
+<footer class="footer"><div class="container"><div class="footer-inner"><div><h4>↗ トレカレーダー</h4><p>ポケカの相場を、もっと賢く。価格変動・PSA10・おすすめ商品をまとめた非公式情報サイトです。</p></div><div><p><a href="#ranking">高騰ランキング</a>　/　<a href="#psa">PSA10情報</a>　/　<a href="#shop">PR・商品紹介</a></p><p>掲載価格は出典に記された過去の週次集計値であり、最新の市場価格を保証しません。</p></div></div><div class="footer-end">© <span id="year"></span> TCG RADAR. Unofficial fan site. / PRを含みます。</div></div></footer>
+<script>
+(()=>{'use strict';
+const original=document.getElementById('site-data');
+let state=JSON.parse(original.textContent);let filter='すべて';let textFilter='';let editingId=null;let sortBy='percent';let selectedPeriod='latest';let direction='up';
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const num=v=>(v===null||v===''||v===undefined?null:Number(v));
+const money=v=>v===null||!Number.isFinite(v)?'価格未登録':'¥'+Math.round(v).toLocaleString('ja-JP');
+function safeUrl(v){try{let u=new URL(v);return u.protocol==='https:'?u.href:''}catch{return ''}}
+function hasData(c){return Number(c.pricePast)>0&&Number(c.priceNow)>0&&!!String(c.source||'').trim()&&!!c.asOfDate}
+function change(c){return c.percentPublished!==undefined?Number(c.percentPublished):((Number(c.priceNow)-Number(c.pricePast))/Number(c.pricePast))*100}
+function latestDate(){return state.cards.filter(hasData).map(c=>c.asOfDate).sort().slice(-1)[0]||'2026-11-22'}
+function priceList(){
+ let entries=selectedPeriod==='latest'?state.cards.filter(c=>hasData(c)&&c.asOfDate===latestDate()):(state.weeklyArchive||[]).filter(c=>c.period===selectedPeriod&&hasData(c));
+ entries=entries.filter(c=>direction==='all'||(direction==='up'?change(c)>0:change(c)<0));
+ return entries.sort((a,b)=>{const d=sortBy==='yen'?(Number(b.priceNow)-Number(b.pricePast))-(Number(a.priceNow)-Number(a.pricePast)):change(b)-change(a);return direction==='down'?-d:d});
+}
+function meta(c){return [c.grade,c.category,c.number].filter(Boolean).map(a=>`<span>${esc(a)}</span>`).join('')}
+function render(){
+$('year').textContent=new Date().getFullYear();
+const info=state.marketInfo||{};
+const date=selectedPeriod==='latest'?latestDate():((state.weeklyArchive||[]).find(x=>x.period===selectedPeriod)?.asOfDate||latestDate());
+$('market-datestamp').textContent=(selectedPeriod==='latest'?'最新掲載日 ':'過去週・終了日 ')+date;
+$('market-description').textContent=(selectedPeriod==='latest'?'最新の確認済みデータのみを比較。':'過去週のスナップショット：'+selectedPeriod+'。')+' PSA10成約価格の週次中央値を比較。期間の異なるデータは混合しません。';
+const days=(new Date().getTime()-new Date(date+'T00:00:00+09:00').getTime())/86400000;
+const ageText=days>3?'⚠ 掲載データが古くなっています。最新価格は各出典で確認してください。':'掲載価格の出典日を確認してください。';
+$('market-status').textContent=(info.lastSuccessfulSync?'自動更新成功：'+info.lastSuccessfulSync+'。':'自動取得は停止中です。')+' '+(selectedPeriod==='latest'?ageText:'これは過去週の成約中央値の履歴です。現在の販売価格ではありません。')+' 価格は各出典で再確認してください。';
+$('metric-priced').textContent=state.cards.filter(hasData).length+'件';$('metric-psa').textContent=state.cards.filter(c=>c.grade==='PSA10').length+'件';$('metric-total').textContent=state.cards.length+'件';
+let priced=priceList().filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter));
+$('rankingRows').innerHTML=priced.length?priced.map((c,i)=>{let delta=change(c);let src= safeUrl(c.sourceUrl);return `<div class="rank-row"><div class="rank-index ${i<3?'top':''}">${i+1}${i===0?'<span class="medal">🏅</span>':''}</div><div><div class="card-name">${esc(c.name)}</div><div class="meta">${meta(c)}${c.weeklyTrades?`<span class="weekly-trades">週次レポート掲載の取引 ${Number(c.weeklyTrades)}件</span>`:''}</div>${src?`<a class="source-link" href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(c.source)} / ${esc(selectedPeriod==='latest'?c.asOfDate:(c.period||c.asOfDate))} ↗</a>`:`<div class="source-link" style="text-decoration:none">${esc(c.source)} / ${esc(selectedPeriod==='latest'?c.asOfDate:(c.period||c.asOfDate))}</div>`}</div><div class="price-num">${money(num(c.priceNow))}<span class="mobile-change ${delta>0?'up':delta<0?'down':'flat'}">${delta>0?'+':''}${delta.toFixed(1)}%</span></div><div class="price-num price-prev">${money(num(c.pricePast))}</div><div class="change-wrap"><div class="change ${delta>0?'up':delta<0?'down':'flat'}">${delta>0?'+':''}${delta.toFixed(1)}%</div><div class="tiny muted">${delta>0?'↑ 上昇':delta<0?'↓ 下落':'→ 横ばい'}</div></div></div>`}).join(''):`<div class="empty-state"><div class="empty-icon">📊</div><h3>${priceList().length?'条件に合うデータがありません':'価格データを準備中です'}</h3><p>カード名と比較価格・出典・確認日を登録すると、ここに上昇率ランキングが自動表示されます。現在は実際の成約価格が未登録のため、架空の高騰率は掲載していません。</p></div>`;
+let watch=state.cards.filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter));$('watchlist').innerHTML=watch.length?watch.map((c,i)=>`<div class="watch-card"><div class="mini-art">${i%2?'✦':'✧'}</div><div><h3>${esc(c.name)}</h3><p>${esc(c.grade)} ・ ${hasData(c)?money(num(c.priceNow))+' <span class="watch-date">('+esc(c.asOfDate)+'の履歴)</span>':'価格未確認'}</p>${safeUrl(c.sourceUrl)?'<a class="source-link" target="_blank" rel="noopener noreferrer" href="'+esc(safeUrl(c.sourceUrl))+'">出典を確認 ↗</a>':''}</div></div>`).join(''):`<div class="empty-state"><p>登録されていません。</p></div>`;
+let psa=state.cards.filter(c=>c.grade==='PSA10'&&hasData(c)&&c.asOfDate===latestDate()).sort((a,b)=>Number(b.priceNow||0)-Number(a.priceNow||0)).slice(0,5);$('psaRows').innerHTML=psa.length?psa.map(c=>`<div class="psa-price-row"><div><div class="item">${esc(c.name)}</div><div class="sub">${esc(c.number||'カード番号未登録')} / ${hasData(c)?esc(c.asOfDate):'価格登録待ち'}</div></div><span class="val">${hasData(c)?money(num(c.priceNow)):'—'}</span></div>`).join(''):'<p>PSA10データはまだありません。</p>';
+$('adsGrid').innerHTML=state.ads.map((a,i)=>{const url=safeUrl(a.url);return `<article class="shop-card"><div class="shop-visual"><span class="ad-stamp">${url?'PR / 広告':'広告準備中'}</span><span aria-hidden="true">${esc(a.emoji)}</span></div><div class="shop-body"><h3>${esc(a.title)}</h3><p>${esc(a.description)}</p>${url?`<a href="${esc(url)}" class="shop-link" target="_blank" rel="sponsored nofollow noopener noreferrer">${esc(a.provider)}で見る ↗（広告）</a>`:'<span class="shop-link is-disabled">リンク設定前</span>'}<div class="shop-sub">${url?'外部サイトが開きます':'専用の紹介リンク登録後に公開できます'}</div></div></article>`}).join('');
+$('operatorInfo').innerHTML=`運営：${esc(state.operator)}${state.contact?`　/　連絡先：<a href="mailto:${esc(state.contact)}" style="text-decoration:underline">${esc(state.contact)}</a>`:''}`;
+if($('editor').classList.contains('open'))renderEditorCards();
+}
+$('weekSelect').addEventListener('change',e=>{selectedPeriod=e.target.value;render()});
+$('directionFilter').addEventListener('click',e=>{const b=e.target.closest('button[data-direction]');if(!b)return;direction=b.dataset.direction;document.querySelectorAll('#directionFilter button').forEach(x=>x.classList.toggle('active',x===b));render()});
+$('sortFilter').addEventListener('click',e=>{const b=e.target.closest('button[data-sort]');if(!b)return;sortBy=b.dataset.sort;document.querySelectorAll('#sortFilter button').forEach(x=>x.classList.toggle('active',x===b));render()});
+$('categoryFilter').addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;filter=b.dataset.cat;document.querySelectorAll('#categoryFilter button').forEach(x=>x.classList.toggle('active',x===b));render()});$('search').addEventListener('input',e=>{textFilter=e.target.value.trim().toLowerCase();render()});
+function field(id){return $(id).value.trim()}
+function setMsg(msg){$('editorMsg').textContent=msg}
+const fields=['name','number','category','grade','past','now','date','source','source-url'];
+function clearFields(){editingId=null;for(const f of fields){let el=$('e-'+f);if(!el)continue;el.value=''}$('e-category').value='トレーナーズ';$('e-grade').value='PSA10';$('saveCard').textContent='カードを保存';}
+function loadCard(id){const c=state.cards.find(x=>x.id===id);if(!c)return;editingId=c.id;const vals={'name':c.name,'number':c.number,'category':c.category,'grade':c.grade,'past':c.pricePast??'','now':c.priceNow??'','date':c.asOfDate,'source':c.source,'source-url':c.sourceUrl};for(const f of fields)$('e-'+f).value=vals[f]??'';$('saveCard').textContent='変更を保存';$('e-name').focus();setMsg('カードを編集中です。変更後は「公開用HTMLを保存」してください。')}
+function renderEditorCards(){$('editorCards').innerHTML=state.cards.map(c=>`<div><span>${esc(c.name)} <span class="muted tiny">${esc(c.grade)}</span></span><span class="buttons"><button data-edit="${esc(c.id)}">編集</button><button data-delete="${esc(c.id)}">削除</button></span></div>`).join('')}
+$('editorCards').addEventListener('click',e=>{const eb=e.target.closest('[data-edit]');const db=e.target.closest('[data-delete]');if(eb)loadCard(eb.dataset.edit);if(db&&window.confirm('このカードを削除しますか？')){state.cards=state.cards.filter(c=>c.id!==db.dataset.delete);if(editingId===db.dataset.delete)clearFields();render();setMsg('カードを削除しました。保存ファイルを出力すると反映されます。')}});
+$('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){setMsg('⚠ カード名を入力してください。');return}let past=field('e-past'),now=field('e-now'),date=field('e-date'),source=field('e-source'),srcUrl=field('e-source-url');if((past||now)&&(!(Number(past)>0&&Number(now)>0)||!date||!source)){setMsg('⚠ 価格を掲載するには、2つの比較価格・確認日・出典をすべて登録してください。');return}if(srcUrl&&!safeUrl(srcUrl)){setMsg('⚠ 出典URLはhttps://から始まるURLを入力してください。');return}let item={id:editingId||'card-'+Date.now().toString(36),name,number:field('e-number'),category:field('e-category'),grade:field('e-grade'),pricePast:past?Number(past):null,priceNow:now?Number(now):null,asOfDate:date,source,sourceUrl:srcUrl};if(editingId){state.cards=state.cards.map(c=>c.id===editingId?item:c)}else{state.cards.push(item)}clearFields();render();setMsg('✅ カード情報を反映しました。公開用HTMLを保存して再アップロードしてください。')});$('clearCard').addEventListener('click',()=>{clearFields();setMsg('入力欄をクリアしました。')});
+function adLoad(){let a=state.ads[Number(field('ad-select'))];$('ad-title').value=a.title;$('ad-desc').value=a.description;$('ad-provider').value=a.provider;$('ad-url').value=a.url||''}
+$('ad-select').addEventListener('change',adLoad);$('saveAd').addEventListener('click',()=>{let u=field('ad-url');if(u&&!safeUrl(u)){setMsg('⚠ 広告URLはhttps://から始まるリンクを登録してください。');return}let a=state.ads[Number(field('ad-select'))];a.title=field('ad-title');a.description=field('ad-desc');a.provider=field('ad-provider');a.url=u;render();setMsg('✅ 広告を更新しました。必ず広告主の規約に従ってリンクを設置してください。')});
+$('site-operator').value=state.operator;$('site-contact').value=state.contact;$('saveOperator').addEventListener('click',()=>{let em=field('site-contact');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setMsg('⚠ メールアドレスの形式を確認してください。');return}state.operator=field('site-operator')||'運営者名を登録してください';state.contact=em;render();setMsg('✅ 運営情報を更新しました。公開用HTMLを保存してください。')});
+$('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。Netlifyのサイト更新画面にアップロードすると公開されます。')});
+if(new URLSearchParams(location.search).has('edit')){$('editor').classList.add('open');adLoad();setMsg('価格・広告リンクを入力し、公開用HTMLを保存すると、再公開できるファイルができます。')}
+render();
+})();
+</script>
+</body>
+</html>
