@@ -1,1 +1,36 @@
-
+name: PSA10 daily update (Tokyo 09:17)
+on:
+  schedule:
+    - cron: '17 0 * * *' # UTC 00:17 = Japan 09:17
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: tcg-price-update
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run price sync (source must be approved)
+        env:
+          DATA_SOURCE_MODE: ${{ vars.DATA_SOURCE_MODE }}
+          AUTHORIZED_FEED_URL: ${{ vars.AUTHORIZED_FEED_URL }}
+          POKECALOOK_REUSE_PERMISSION: ${{ vars.POKECALOOK_REUSE_PERMISSION }}
+        run: python scripts/update_psa10.py
+      - name: Publish changes to repository (Netlify connected repo deploys automatically)
+        run: |
+          if git diff --quiet -- index.html; then
+            echo 'No validated price changes to publish.'
+            exit 0
+          fi
+          git config user.name 'tcg-radar-automation[bot]'
+          git config user.email 'tcg-radar-automation[bot]@users.noreply.github.com'
+          git add index.html
+          git commit -m 'chore: daily PSA10 verified market refresh'
+          git push
