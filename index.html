@@ -47,6 +47,57 @@
 .watch-date{font-size:11px;opacity:.8}
 .archive-banner{border-left:4px solid #5b6698;background:#f3f5fb;color:#304264;padding:12px 14px;border-radius:7px;margin:6px 0 14px;font-size:12px;line-height:1.65}
 @media(max-width:650px){.week-controls{align-items:stretch;flex-direction:column}.week-controls select{width:100%}}
+
+/* ===== TCG RADAR visual detail additions ===== */
+.rank-info{display:flex;gap:12px;align-items:center;min-width:0}
+.rank-info-main{min-width:0;flex:1}
+.rank-photo{width:57px;height:78px;flex:none}
+.card-photo{position:relative;overflow:hidden;display:grid;place-items:center;border-radius:9px;background:linear-gradient(148deg,#182a50,#564bb5 64%,#caa7fa);border:1px solid #c9c7e9;box-shadow:0 3px 0 #d6d9e7;isolation:isolate}
+.card-photo::before{content:'';position:absolute;inset:6px;border:1px solid rgba(255,255,255,.32);border-radius:5px;pointer-events:none;z-index:2}
+.card-photo::after{content:'';position:absolute;width:150%;height:40%;transform:rotate(-30deg) translateY(10px);background:linear-gradient(180deg,transparent,rgba(255,255,255,.12),transparent);pointer-events:none;z-index:1}
+.card-photo .card-symbol{font-size:21px;color:#e7d8fc;line-height:1;font-weight:800;z-index:1}
+.card-photo .card-noimage{font-size:7px;letter-spacing:.08em;color:#fff;position:absolute;bottom:12px;z-index:2}
+.card-photo.has-photo{background:#eef1fb;border-color:#d2d9e8}.card-photo.has-photo::before,.card-photo.has-photo::after{display:none}
+.card-photo img{position:absolute;width:100%;height:100%;object-fit:contain;display:block;z-index:3;inset:0;background:#f1f3f9}
+.card-photo img[hidden]{display:none}
+.detail-open{border:1px solid #d8dff1;color:#5045a3;background:#f4f3ff;border-radius:7px;padding:5px 10px;font-size:10px;font-weight:800;margin-top:7px;cursor:pointer;display:inline-flex;gap:5px;align-items:center}
+.detail-open:hover,.detail-open:focus-visible{background:#e7e3ff;outline:2px solid rgba(116,98,218,.17)}
+.watch-card{align-items:flex-start}.watch-card .card-photo{width:48px;height:64px;flex:none}.watch-card .detail-open{padding:4px 8px;font-size:10px}
+.watch-card .watch-info{min-width:0;flex:1}.watch-card .source-link{overflow-wrap:anywhere}
+.detail-overlay[hidden]{display:none!important}
+.detail-overlay{position:fixed;inset:0;z-index:1200;background:rgba(7,14,32,.75);overflow-y:auto;padding:18px 12px;display:flex;align-items:flex-start;justify-content:center;backdrop-filter:blur(3px)}
+.detail-panel{background:#fff;width:min(780px,100%);border-radius:20px;box-shadow:0 24px 75px rgba(0,0,0,.26);padding:24px;position:relative;margin:12px 0 24px}
+.detail-close{position:absolute;right:14px;top:14px;width:36px;height:36px;border:0;border-radius:50%;background:#eef1f8;font-size:23px;color:#30416a;display:grid;place-items:center}
+.detail-heading{display:flex;gap:20px;align-items:center;padding-right:26px}
+.detail-photo{width:125px;height:175px;flex:none;border-radius:13px}
+.detail-photo .card-symbol{font-size:48px}.detail-photo .card-noimage{font-size:10px;bottom:30px}
+.detail-eyebrow{font-size:11px;font-weight:850;letter-spacing:.09em;color:#6f62d4;margin:0 0 7px}
+.detail-name{font-size:24px;line-height:1.35;margin:0 0 8px;font-weight:900;color:#1a2843;overflow-wrap:anywhere}
+.detail-meta{color:#65718c;font-size:12px;margin:0 0 8px}
+.detail-current{font-size:24px;color:#172a4d;font-weight:900;line-height:1.2}
+.detail-current small{font-size:11px;color:#68758e;font-weight:600;margin-left:4px}
+.detail-graph{border-radius:15px;background:#f8faff;border:1px solid #e4eaf6;padding:16px;margin-top:18px}
+.detail-tabs{display:flex;gap:7px;align-items:center;flex-wrap:wrap}
+.detail-tabs button{border:1px solid #d4dcf0;background:#fff;color:#5d6985;border-radius:9px;padding:9px 14px;font-size:12px;font-weight:850}
+.detail-tabs button.active{background:#203050;color:#fff;border-color:#203050}
+.graph-context{font-size:12px;color:#56647f;margin:12px 0 10px}
+.graph-plot{background:#fff;border:1px solid #e1e7f3;border-radius:12px;min-height:225px;padding:8px;display:grid;place-items:center}
+.graph-plot svg{width:100%;max-height:272px}
+.graph-empty{padding:20px 10px;text-align:center;color:#667590;font-size:12px;line-height:1.9}
+.graph-empty strong{display:block;color:#253652;font-size:15px;margin-bottom:7px}
+.graph-foot{font-size:11px;line-height:1.7;color:#78849c;margin-top:8px}
+.graph-data-source{margin-top:14px;font-size:11px;color:#68758b;overflow-wrap:anywhere}
+.graph-data-source a{color:#5756ae;text-decoration:underline}
+.detail-operator-note{font-size:11px;line-height:1.7;color:#7b859a;margin-top:12px}
+body.modal-open{overflow:hidden}
+.inline-small{font-size:10px;color:#728098}
+.history-input-note{font-size:11px;line-height:1.8;color:#6b7890;margin:5px 0 9px}
+.history-list{max-height:180px;overflow-y:auto;margin-top:8px;font-size:11px}
+.history-entry{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eef1f6}
+.history-entry button{background:#fbe6e7;color:#a83947;border:0;border-radius:6px;padding:3px 9px;font-size:10px;cursor:pointer}
+@media(max-width:750px){.rank-photo{width:43px;height:60px}.rank-info{gap:8px}.rank-info-main{min-width:0}.rank-info .card-name{font-size:12px}}
+@media(max-width:650px){.rank-photo{width:40px;height:55px}.card-photo .card-symbol{font-size:17px}.rank-info{gap:7px}.rank-info .card-name{font-size:11px}.detail-panel{padding:18px 14px;border-radius:16px}.detail-heading{gap:12px}.detail-photo{width:90px;height:128px}.detail-name{font-size:18px}.detail-current{font-size:20px}.detail-graph{padding:11px}.graph-plot{min-height:190px}.detail-overlay{padding:8px}}
+
 </style>
 <script id="site-data" type="application/json">
 {
@@ -2102,13 +2153,27 @@
      <div class="field"><label>確認日</label><input type="date" id="e-date" /></div>
      <div class="field"><label>価格の出典（必須）</label><input id="e-source" placeholder="例：販売成約履歴" /></div>
      <div class="field full"><label>価格の出典URL（推奨）</label><input type="url" id="e-source-url" placeholder="https://..." /></div>
+     <div class="field full"><label>カード画像のURLまたは相対パス（任意）</label><input id="e-image-url" placeholder="例：card-images/mikan-058-052.jpg" /><p class="inline-small">自分で撮影・掲載許可を得た画像のみ登録してください。対応：HTTPSの画像URL、card-images/ 内の画像</p></div>
     </div>
     <div class="edit-action"><button id="saveCard">カードを保存</button><button class="alt" id="clearCard">入力をクリア</button></div>
     <div class="editor-list" id="editorCards"></div>
    </div>
    <div>
-    <div class="edit-box">
-     <h3>② 商品広告リンクを設定</h3>
+    <div class="edit-box" id="historyEditor">
+     <h3>② 実際の日付別価格を登録（7日・30日グラフ用）</h3>
+     <p class="history-input-note">同一カード番号・同一グレードの実際のPSA10取引価格のみ登録します。架空の値や前週中央値を日次価格として入力しないでください。</p>
+     <div class="field-grid">
+      <div class="field full"><label>カードを選択</label><select id="history-card"></select></div>
+      <div class="field"><label>取引日・価格確認日</label><input id="history-date" type="date" /></div>
+      <div class="field"><label>実際の日付別価格（円）</label><input id="history-price" type="number" min="1" step="1" /></div>
+      <div class="field full"><label>価格の出典</label><input id="history-source" placeholder="例：PSA10の成約履歴" /></div>
+      <div class="field full"><label>出典URL（HTTPS必須）</label><input id="history-url" placeholder="https://..." /></div>
+     </div>
+     <div class="edit-action"><button type="button" id="saveHistory">この価格記録を追加・更新</button></div>
+     <div class="history-list" id="historyEntries"></div>
+    </div>
+    <div class="edit-box" style="margin-top:16px">
+     <h3>③ 商品広告リンクを設定</h3>
      <div class="field-grid">
       <div class="field full"><label>広告枠</label><select id="ad-select"><option value="0">1. 人気のポケカBOX</option><option value="1">2. PSA10保管用品</option><option value="2">3. トレカ買取サービス</option></select></div>
       <div class="field full"><label>見出し</label><input id="ad-title" /></div>
@@ -2119,7 +2184,7 @@
      <div class="edit-action"><button id="saveAd">広告設定を保存</button></div>
     </div>
     <div class="edit-box" style="margin-top:16px">
-     <h3>③ 運営者情報</h3>
+     <h3>④ 運営者情報</h3>
      <div class="field-grid">
       <div class="field full"><label>運営者名・屋号</label><input id="site-operator" /></div>
       <div class="field full"><label>連絡先メール（公開されます。任意）</label><input id="site-contact" type="email" placeholder="example@example.com" /></div>
@@ -2135,11 +2200,37 @@
 <main id="top">
 <section class="hero"><div class="container hero-inner"><div class="hero-copy"><p class="eyebrow">POKÉMON CARD MARKET WATCH</p><h1>ポケカの相場を、<br /><em>もっと賢く。</em></h1><p>高騰ランキングも、PSA10の価格比較も。<br />気になるカードを見つけるためのトレカ情報サイト。</p><div class="hero-actions"><a class="btn" href="#ranking">↗ 高騰ランキングを見る</a><a class="btn secondary" href="#psa">PSA10をチェック →</a></div></div><div class="hero-art" aria-hidden="true"><div class="spark">✦</div><div class="art-card back"><span class="star">✶</span><span class="cap">COLLECT / PLAY</span></div><div class="art-card"><span class="star">✧</span><span class="cap">ULTRA RARE / CARD</span></div><div class="spark bottom">✦</div><div class="floating-stat">↗ PRICE WATCH</div></div></div></section>
 <div class="container metrics"><div class="metric"><div class="metric-icon">📈</div><div><strong id="metric-priced">0件</strong><small>価格記録のある銘柄</small></div></div><div class="metric"><div class="metric-icon">💎</div><div><strong id="metric-psa">0件</strong><small>PSA10の登録銘柄</small></div></div><div class="metric"><div class="metric-icon">🔎</div><div><strong id="metric-total">0件</strong><small>ウォッチ対象カード</small></div></div></div>
-<section class="container section" id="ranking"><div class="section-head"><div><p class="section-label">MARKET RANKING</p><h2>📈 ポケカ高騰ランキング</h2><p class="section-summary"><span id="market-description">確認できた週ごとに比較し、過去週の価格を最新値として混ぜずに表示します。</span></p></div><span class="pill" id="market-datestamp">データ確認中</span></div><div class="week-controls"><label for="weekSelect">比較期間を選択</label><select id="weekSelect" aria-label="比較期間"><option value="latest">最新の確認済み（11/22）</option><option value="2026/11/13〜11/19">2026/11/13〜11/19（過去週）</option><option value="2026/11/06〜11/12">2026/11/06〜11/12（過去週）</option><option value="2026/10/30〜11/05">2026/10/30〜11/05（過去週）</option><option value="2026/10/23〜10/29">2026/10/23〜10/29（過去週）</option></select><div class="seg" id="directionFilter"><button data-direction="up" class="active" type="button">上昇</button><button data-direction="down" type="button">下落</button><button data-direction="all" type="button">すべて</button></div></div><div class="feature-row"><div class="seg" id="categoryFilter"><button class="active" data-cat="すべて">すべて</button><button data-cat="トレーナーズ">トレーナーズ</button><button data-cat="ポケモン">ポケモン</button></div><div class="seg" id="sortFilter" aria-label="ランキングの並び順"><button class="active" data-sort="percent" type="button">上昇率順</button><button data-sort="yen" type="button">上昇額順</button></div><div class="search"><span>⌕</span><input id="search" aria-label="カード名を検索" placeholder="カード名・番号で検索" /></div></div><div class="pane"><div class="pane-head"><span>順位</span><span>カード / 状態</span><span>直近週中央値</span><span>前週中央値</span><span>変動率</span></div><div id="rankingRows"></div></div><div class="info-strip"><span>ⓘ</span><div><strong>データの読み方</strong>：表示価格は各カードのPSA10成約価格（直近7日中央値）の参考値です。前週7日中央値との差を比較します。最終出典更新日とURLをカード別に確認してください。<strong>毎日の自動更新は、データの再利用許諾およびGitHub連携の設定後に開始されます。</strong> 最安出品額や買取保証額ではありません。<a class="evidence-link" href="https://pokecalook.com/articles/weekly-rising.html" target="_blank" rel="noopener noreferrer">元の週間レポート ↗</a></div></div><div class="method-note" id="market-status">初期の確認済み価格は2026/11/22時点です。価格は自動取得中とは限りません。</div><h3 style="font-size:16px;margin:26px 0 0">👀 ウォッチリスト <span class="muted tiny" style="font-weight:normal">（73銘柄・過去の成約価格は当時の参考値）</span></h3><div class="watchlist" id="watchlist"></div></section>
+<section class="container section" id="ranking"><div class="section-head"><div><p class="section-label">MARKET RANKING</p><h2>📈 ポケカ高騰ランキング</h2><p class="section-summary"><span id="market-description">確認できた週ごとに比較し、過去週の価格を最新値として混ぜずに表示します。</span></p></div><span class="pill" id="market-datestamp">データ確認中</span></div><div class="week-controls"><label for="weekSelect">比較期間を選択</label><select id="weekSelect" aria-label="比較期間"><option value="latest">最新の確認済み（11/22）</option><option value="2026/11/13〜11/19">2026/11/13〜11/19（過去週）</option><option value="2026/11/06〜11/12">2026/11/06〜11/12（過去週）</option><option value="2026/10/30〜11/05">2026/10/30〜11/05（過去週）</option><option value="2026/10/23〜10/29">2026/10/23〜10/29（過去週）</option></select><div class="seg" id="directionFilter"><button data-direction="up" class="active" type="button">上昇</button><button data-direction="down" type="button">下落</button><button data-direction="all" type="button">すべて</button></div></div><div class="feature-row"><div class="seg" id="categoryFilter"><button class="active" data-cat="すべて">すべて</button><button data-cat="トレーナーズ">トレーナーズ</button><button data-cat="ポケモン">ポケモン</button></div><div class="seg" id="sortFilter" aria-label="ランキングの並び順"><button class="active" data-sort="percent" type="button">上昇率順</button><button data-sort="yen" type="button">上昇額順</button></div><div class="search"><span>⌕</span><input id="search" aria-label="カード名を検索" placeholder="カード名・番号で検索" /></div></div><div class="pane"><div class="pane-head"><span>順位</span><span>カード / 状態</span><span>直近週中央値</span><span>前週中央値</span><span>変動率</span></div><div id="rankingRows"></div></div><div class="info-strip"><span>ⓘ</span><div><strong>データの読み方</strong>：表示価格は各カードのPSA10成約価格（直近7日中央値）の参考値です。前週7日中央値との差を比較します。最終出典更新日とURLをカード別に確認してください。<strong>GitHub連携は完了していますが、価格データの自動取得は利用許諾が確認できるまで停止しています。</strong> 最安出品額や買取保証額ではありません。<a class="evidence-link" href="https://pokecalook.com/articles/weekly-rising.html" target="_blank" rel="noopener noreferrer">元の週間レポート ↗</a></div></div><div class="method-note" id="market-status">初期の確認済み価格は2026/11/22時点です。価格は自動取得中とは限りません。</div><h3 style="font-size:16px;margin:26px 0 0">👀 ウォッチリスト <span class="muted tiny" style="font-weight:normal">（73銘柄・過去の成約価格は当時の参考値）</span></h3><div class="watchlist" id="watchlist"></div></section>
 <section class="container section" id="psa"><div class="section-head"><div><p class="section-label">GRADED CARD GUIDE</p><h2>💎 PSA10カード情報</h2><p class="section-summary">鑑定品の価格も、カード番号まで揃えて比較。</p></div></div><div class="psa-panel"><div class="psa-guide"><span class="tag">PSA GRADED CARD</span><h3>PSA 10<br />GEM MINT</h3><p>PSA10はPSAの鑑定基準における最高評価です。ただし市場価格は変動し、PSA10でもケースの状態などは個別に確認する必要があります。</p><a href="https://www.psacard.com/ja-JP/gradingstandards" target="_blank" rel="noopener noreferrer">PSA公式のグレーディング基準 ↗</a></div><div class="psa-data"><h3>PSA10 価格ウォッチ</h3><p>確認済みのPSA10データを表示します。自動更新状況はランキング欄で確認できます。</p><div id="psaRows"></div><div class="psa-note">🔍 同一カード番号・同一グレードの比較が基本です</div></div></div></section>
 <section class="container section" id="shop"><div class="section-head"><div><p class="section-label">SHOP & RECOMMENDS</p><h2>🛒 おすすめ商品・サービス</h2><p class="section-summary">買い物やコレクションに役立つ商品をまとめています。</p></div><span class="pill">PR / 広告掲載欄</span></div><div class="shop-grid" id="adsGrid"></div><div class="info-strip"><span>ⓘ</span><div>掲載商品にはアフィリエイト広告が含まれます。各商品の販売条件・仕様はリンク先でご確認ください。広告リンクがない商品枠はクリックできません。広告が成果条件を満たした場合に紹介報酬が発生することがあります。</div></div></section>
 <section class="container section" id="guide"><div class="section-head"><div><p class="section-label">ABOUT THIS SITE</p><h2>サイトの使い方</h2><p class="section-summary">価格データの透明性を大切にする非公式のカード情報サイトです。</p></div></div><div class="how-grid"><article class="how-card"><p class="how-num">01</p><h3>カードを見つける</h3><p>トレーナーズ・ポケモンの分類、カード名、カード番号で絞り込めます。</p></article><article class="how-card"><p class="how-num">02</p><h3>価格の出典を確認</h3><p>同じカードの同じ状態を比較し、掲載元と確認日をチェックしましょう。</p></article><article class="how-card"><p class="how-num">03</p><h3>商品情報を確認</h3><p>広告リンクから外部ショップへ移動する際は販売条件や価格を再確認してください。</p></article></div><div class="site-info"><h3>運営者情報・プライバシーについて</h3><p id="operatorInfo"></p><p style="margin-top:9px">当サイトは非公式のファン向け情報サイトであり、株式会社ポケモン、任天堂、PSAとは提携・公認関係にありません。掲載データは投資・購入の成果を保証するものではありません。サイトに入力フォームによる個人情報の送信機能はありませんが、ホスティング事業者および広告配信事業者は、それぞれのポリシーに従いアクセス情報やCookie等を扱う場合があります。広告掲載後は各広告サービスの規定に合わせて本記載を更新してください。</p></div></section>
 </main>
+<div class="detail-overlay" id="detailOverlay" hidden role="dialog" aria-modal="true" aria-labelledby="detailTitle">
+  <div class="detail-panel" id="detailPanel">
+    <button type="button" class="detail-close" id="detailClose" aria-label="詳細を閉じる">×</button>
+    <div class="detail-heading">
+      <div class="card-photo detail-photo" id="detailPhoto" aria-label="カード画像欄"></div>
+      <div>
+       <p class="detail-eyebrow">PSA10 CARD DETAIL / 相場履歴</p>
+       <h2 class="detail-name" id="detailTitle"></h2>
+       <p class="detail-meta" id="detailMeta"></p>
+       <div class="detail-current" id="detailCurrent"></div>
+       <div id="detailAsOf" class="inline-small"></div>
+      </div>
+    </div>
+    <div class="detail-graph">
+      <div class="detail-tabs" role="group" aria-label="価格表示期間">
+       <button type="button" data-range="7" class="active">7日</button>
+       <button type="button" data-range="30">30日</button>
+      </div>
+      <p id="graphContext" class="graph-context"></p>
+      <div class="graph-plot" id="graphPlot" aria-live="polite"></div>
+      <p class="graph-foot" id="graphFoot"></p>
+    </div>
+    <div id="graphSource" class="graph-data-source"></div>
+    <p class="detail-operator-note">※ グラフは出典のある観測値だけで描画し、存在しない日付の価格を補間・推定しません。掲載画像は権利確認済みのものだけ登録してください。</p>
+  </div>
+</div>
 <footer class="footer"><div class="container"><div class="footer-inner"><div><h4>↗ トレカレーダー</h4><p>ポケカの相場を、もっと賢く。価格変動・PSA10・おすすめ商品をまとめた非公式情報サイトです。</p></div><div><p><a href="#ranking">高騰ランキング</a>　/　<a href="#psa">PSA10情報</a>　/　<a href="#shop">PR・商品紹介</a></p><p>掲載価格は出典に記された過去の週次集計値であり、最新の市場価格を保証しません。</p></div></div><div class="footer-end">© <span id="year"></span> TCG RADAR. Unofficial fan site. / PRを含みます。</div></div></footer>
 <script>
 (()=>{'use strict';
@@ -2183,17 +2274,141 @@ $('sortFilter').addEventListener('click',e=>{const b=e.target.closest('button[da
 $('categoryFilter').addEventListener('click',e=>{const b=e.target.closest('button[data-cat]');if(!b)return;filter=b.dataset.cat;document.querySelectorAll('#categoryFilter button').forEach(x=>x.classList.toggle('active',x===b));render()});$('search').addEventListener('input',e=>{textFilter=e.target.value.trim().toLowerCase();render()});
 function field(id){return $(id).value.trim()}
 function setMsg(msg){$('editorMsg').textContent=msg}
-const fields=['name','number','category','grade','past','now','date','source','source-url'];
+const fields=['name','number','category','grade','past','now','date','source','source-url','image-url'];
 function clearFields(){editingId=null;for(const f of fields){let el=$('e-'+f);if(!el)continue;el.value=''}$('e-category').value='トレーナーズ';$('e-grade').value='PSA10';$('saveCard').textContent='カードを保存';}
-function loadCard(id){const c=state.cards.find(x=>x.id===id);if(!c)return;editingId=c.id;const vals={'name':c.name,'number':c.number,'category':c.category,'grade':c.grade,'past':c.pricePast??'','now':c.priceNow??'','date':c.asOfDate,'source':c.source,'source-url':c.sourceUrl};for(const f of fields)$('e-'+f).value=vals[f]??'';$('saveCard').textContent='変更を保存';$('e-name').focus();setMsg('カードを編集中です。変更後は「公開用HTMLを保存」してください。')}
+function loadCard(id){const c=state.cards.find(x=>x.id===id);if(!c)return;editingId=c.id;const vals={'name':c.name,'number':c.number,'category':c.category,'grade':c.grade,'past':c.pricePast??'','now':c.priceNow??'','date':c.asOfDate,'source':c.source,'source-url':c.sourceUrl,'image-url':c.imageUrl||''};for(const f of fields)$('e-'+f).value=vals[f]??'';$('saveCard').textContent='変更を保存';$('e-name').focus();setMsg('カードを編集中です。変更後は「公開用HTMLを保存」してください。')}
 function renderEditorCards(){$('editorCards').innerHTML=state.cards.map(c=>`<div><span>${esc(c.name)} <span class="muted tiny">${esc(c.grade)}</span></span><span class="buttons"><button data-edit="${esc(c.id)}">編集</button><button data-delete="${esc(c.id)}">削除</button></span></div>`).join('')}
 $('editorCards').addEventListener('click',e=>{const eb=e.target.closest('[data-edit]');const db=e.target.closest('[data-delete]');if(eb)loadCard(eb.dataset.edit);if(db&&window.confirm('このカードを削除しますか？')){state.cards=state.cards.filter(c=>c.id!==db.dataset.delete);if(editingId===db.dataset.delete)clearFields();render();setMsg('カードを削除しました。保存ファイルを出力すると反映されます。')}});
-$('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){setMsg('⚠ カード名を入力してください。');return}let past=field('e-past'),now=field('e-now'),date=field('e-date'),source=field('e-source'),srcUrl=field('e-source-url');if((past||now)&&(!(Number(past)>0&&Number(now)>0)||!date||!source)){setMsg('⚠ 価格を掲載するには、2つの比較価格・確認日・出典をすべて登録してください。');return}if(srcUrl&&!safeUrl(srcUrl)){setMsg('⚠ 出典URLはhttps://から始まるURLを入力してください。');return}let item={id:editingId||'card-'+Date.now().toString(36),name,number:field('e-number'),category:field('e-category'),grade:field('e-grade'),pricePast:past?Number(past):null,priceNow:now?Number(now):null,asOfDate:date,source,sourceUrl:srcUrl};if(editingId){state.cards=state.cards.map(c=>c.id===editingId?item:c)}else{state.cards.push(item)}clearFields();render();setMsg('✅ カード情報を反映しました。公開用HTMLを保存して再アップロードしてください。')});$('clearCard').addEventListener('click',()=>{clearFields();setMsg('入力欄をクリアしました。')});
+$('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){setMsg('⚠ カード名を入力してください。');return}let past=field('e-past'),now=field('e-now'),date=field('e-date'),source=field('e-source'),srcUrl=field('e-source-url');if((past||now)&&(!(Number(past)>0&&Number(now)>0)||!date||!source)){setMsg('⚠ 価格を掲載するには、2つの比較価格・確認日・出典をすべて登録してください。');return}if(srcUrl&&!safeUrl(srcUrl)){setMsg('⚠ 出典URLはhttps://から始まるURLを入力してください。');return}let item={...(state.cards.find(x=>x.id===editingId)||{}),id:editingId||'card-'+Date.now().toString(36),name,number:field('e-number'),category:field('e-category'),grade:field('e-grade'),pricePast:past?Number(past):null,priceNow:now?Number(now):null,asOfDate:date,source,sourceUrl:srcUrl,imageUrl:field('e-image-url')};if(item.imageUrl&&!safeImage(item.imageUrl)){setMsg('⚠ 画像はHTTPS URLまたは card-images/ 内の画像パスを指定してください。');return}if(editingId){state.cards=state.cards.map(c=>c.id===editingId?item:c)}else{state.cards.push(item)}clearFields();render();setMsg('✅ カード情報を反映しました。公開用HTMLを保存して再アップロードしてください。')});$('clearCard').addEventListener('click',()=>{clearFields();setMsg('入力欄をクリアしました。')});
 function adLoad(){let a=state.ads[Number(field('ad-select'))];$('ad-title').value=a.title;$('ad-desc').value=a.description;$('ad-provider').value=a.provider;$('ad-url').value=a.url||''}
 $('ad-select').addEventListener('change',adLoad);$('saveAd').addEventListener('click',()=>{let u=field('ad-url');if(u&&!safeUrl(u)){setMsg('⚠ 広告URLはhttps://から始まるリンクを登録してください。');return}let a=state.ads[Number(field('ad-select'))];a.title=field('ad-title');a.description=field('ad-desc');a.provider=field('ad-provider');a.url=u;render();setMsg('✅ 広告を更新しました。必ず広告主の規約に従ってリンクを設置してください。')});
 $('site-operator').value=state.operator;$('site-contact').value=state.contact;$('saveOperator').addEventListener('click',()=>{let em=field('site-contact');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setMsg('⚠ メールアドレスの形式を確認してください。');return}state.operator=field('site-operator')||'運営者名を登録してください';state.contact=em;render();setMsg('✅ 運営情報を更新しました。公開用HTMLを保存してください。')});
 $('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。Netlifyのサイト更新画面にアップロードすると公開されます。')});
 if(new URLSearchParams(location.search).has('edit')){$('editor').classList.add('open');adLoad();setMsg('価格・広告リンクを入力し、公開用HTMLを保存すると、再公開できるファイルができます。')}
+
+/* CARD IMAGE & VERIFIED PRICE CHARTS - no invented daily prices */
+let detailRecord=null, detailRange=7, focusBeforeDetail=null;
+state.cards.forEach(c=>{ if(!Array.isArray(c.dailyHistory)) c.dailyHistory=[]; if(typeof c.imageUrl!=='string')c.imageUrl=''; });
+function normalizedNumber(v){return String(v||'').replace(/\s+/g,'').toLowerCase()}
+function cardBase(record){return state.cards.find(c=>normalizedNumber(c.number)===normalizedNumber(record.number)&&c.grade===record.grade)||record}
+function safeImage(v){
+ const value=String(v||'').trim();
+ if(/^card-images\/[a-zA-Z0-9_./-]+\.(?:png|jpe?g|webp)$/i.test(value)&&!value.includes('..')&&value.length<200)return value;
+ if(/^https:\/\//i.test(value)){try{let u=new URL(value);return u.protocol==='https:'&&!u.username&&!u.password?u.href:''}catch(e){return ''}}
+ return '';
+}
+function imageElement(card,extraClass=''){
+ let item=document.createElement('div');item.className='card-photo '+extraClass;
+ item.innerHTML='<span class="card-symbol" aria-hidden="true">✦</span><span class="card-noimage">IMAGE</span>';
+ const src=safeImage(cardBase(card).imageUrl);
+ if(src){const im=document.createElement('img');im.src=src;im.alt=card.name+' の掲載許可済み画像';im.loading='lazy';im.decoding='async';im.addEventListener('error',()=>{im.remove()},{once:true});item.classList.add('has-photo');item.append(im)}
+ return item;
+}
+function detailButton(c){
+ const b=document.createElement('button');b.type='button';b.className='detail-open';b.textContent='画像・推移を見る ↗';b.setAttribute('aria-label',c.name+'の詳細と7日・30日相場を見る');b.addEventListener('click',()=>openDetail(c));return b;
+}
+function enhanceRows(priced,watch){
+ Array.from($('rankingRows').querySelectorAll('.rank-row')).forEach((r,i)=>{
+  const c=priced[i];if(!c)return;
+  const info=r.children[1];if(!info)return;
+  info.classList.add('rank-info');
+  let content=document.createElement('div');content.className='rank-info-main';
+  while(info.firstChild)content.appendChild(info.firstChild);
+  info.append(imageElement(c,'rank-photo'),content);
+  content.appendChild(detailButton(c));
+ });
+ Array.from($('watchlist').querySelectorAll('.watch-card')).forEach((r,i)=>{
+   const c=watch[i];if(!c)return;
+   const placeholder=r.querySelector('.mini-art');if(placeholder)placeholder.replaceWith(imageElement(c));
+   const info=r.children[r.children.length-1];if(info){info.classList.add('watch-info');info.appendChild(detailButton(c))}
+ });
+}
+function validDateStr(v){return /^\d{4}-\d{2}-\d{2}$/.test(String(v||''))&&!isNaN(new Date(String(v)+'T00:00:00+09:00').getTime())}
+function validObservation(v){return !!v&&validDateStr(v.date)&&Number.isFinite(Number(v.price))&&Number(v.price)>0&&Number(v.price)<1e9&&!!String(v.source||'').trim()&&!!safeUrl(v.sourceUrl)}
+function dayStamp(str){return new Date(str+'T00:00:00+09:00').getTime()}
+function recentDaily(c,windowDays,anchor){const end=dayStamp(anchor),start=end-(windowDays-1)*86400000;return (Array.isArray(c.dailyHistory)?c.dailyHistory:[]).filter(v=>validObservation(v)&&dayStamp(v.date)>=start&&dayStamp(v.date)<=end).map(v=>({date:v.date,price:Number(v.price),source:v.source,sourceUrl:v.sourceUrl})).sort((a,b)=>a.date.localeCompare(b.date))}
+function weeklyPoints(c,anchor){
+ let rows=(state.weeklyArchive||[]).filter(x=>normalizedNumber(x.number)===normalizedNumber(c.number)&&x.grade===c.grade&&hasData(x)).concat(state.cards.filter(x=>normalizedNumber(x.number)===normalizedNumber(c.number)&&x.grade===c.grade&&hasData(x)));
+ const end=dayStamp(anchor),start=end-29*86400000;
+ let perDate=new Map();rows.filter(x=>validDateStr(x.asOfDate)&&dayStamp(x.asOfDate)>=start&&dayStamp(x.asOfDate)<=end).forEach(x=>{perDate.set(x.asOfDate,{date:x.asOfDate,price:Number(x.priceNow),source:x.source,sourceUrl:x.sourceUrl})});
+ return [...perDate.values()].sort((a,b)=>a.date.localeCompare(b.date));
+}
+function yenAxis(n){return Number(n).toLocaleString('ja-JP')+'円'}
+function makeSvgChart(points,context){
+ let minPrice=Math.min(...points.map(p=>p.price)),maxPrice=Math.max(...points.map(p=>p.price));
+ let pad=Math.max(400,Math.round((maxPrice-minPrice)*.15),maxPrice*.025);let lo=Math.max(0,minPrice-pad),hi=maxPrice+pad;
+ if(hi<=lo)hi=lo+1000;
+ const L=80,R=692,T=32,B=232,H=B-T;
+ const xs=points.map((p,i)=>L+(R-L)*((dayStamp(p.date)-dayStamp(points[0].date))/Math.max(1,dayStamp(points[points.length-1].date)-dayStamp(points[0].date))));
+ const ys=points.map(p=>B-((p.price-lo)/(hi-lo))*H);
+ let lines='';for(let i=0;i<5;i++){let y=T+H*i/4;let val=hi-(hi-lo)*i/4;lines+=`<line x1="${L}" y1="${y.toFixed(1)}" x2="${R}" y2="${y.toFixed(1)}" stroke="#e7eaf4" stroke-width="1"/><text x="${L-8}" y="${(y+4).toFixed(1)}" text-anchor="end" font-size="12" fill="#65718e">${Math.round(val).toLocaleString('ja-JP')}</text>`}
+ let coordinates=points.map((p,i)=>`${xs[i].toFixed(1)},${ys[i].toFixed(1)}`).join(' ');
+ let marks=points.map((p,i)=>`<circle cx="${xs[i].toFixed(1)}" cy="${ys[i].toFixed(1)}" r="6" fill="#7057dc" stroke="white" stroke-width="2"><title>${esc(p.date)}　${yenAxis(p.price)}</title></circle>`).join('');
+ let labels=[points[0],points[points.length-1]].map((p,i)=>`<text x="${i===0?L:R}" y="${B+22}" text-anchor="${i===0?'start':'end'}" font-size="12" fill="#65718e">${esc(p.date.slice(5))}</text>`).join('');
+ let trend=points[points.length-1].price>=points[0].price?'#10a67e':'#d45764';
+ return `<svg viewBox="0 0 720 270" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(context)}、${points.length}件の観測点による価格グラフ"><text x="16" y="21" font-size="12" fill="#77839b">価格（円）</text>${lines}<polyline points="${coordinates}" fill="none" stroke="${trend}" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/>${marks}${labels}</svg>`;
+}
+function weeklyComparisonChart(record){
+ let p=Number(record.pricePast),n=Number(record.priceNow),top=Math.max(p,n)*1.15;
+ let w1=150*p/top,w2=150*n/top;let diff=((n-p)/p*100);
+ return `<svg viewBox="0 0 720 244" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="前週と直近週のPSA10成約価格中央値を比較"><text x="12" y="23" font-size="13" fill="#77839b">PSA10 / 7日集計値の比較</text><line x1="110" y1="193" x2="635" y2="193" stroke="#e2e8f2"/><rect x="160" y="${193-w1}" width="150" height="${w1}" rx="10" fill="#9ca9bd"/><rect x="400" y="${193-w2}" width="150" height="${w2}" rx="10" fill="#7360d9"/><text text-anchor="middle" x="235" y="${183-w1}" font-size="17" font-weight="bold" fill="#25364e">${money(p)}</text><text text-anchor="middle" x="475" y="${183-w2}" font-size="17" font-weight="bold" fill="#25364e">${money(n)}</text><text text-anchor="middle" x="235" y="215" font-size="14" fill="#607087">前週7日間</text><text text-anchor="middle" x="475" y="215" font-size="14" fill="#607087">直近7日間</text><text text-anchor="middle" x="360" y="239" font-size="13" fill="#53725c">${diff>=0?'+':''}${diff.toFixed(1)}%</text></svg>`;
+}
+function openDetail(c){
+ focusBeforeDetail=document.activeElement;detailRecord=c;detailRange=7;
+ const base=cardBase(c),overlay=$('detailOverlay');
+ $('detailTitle').textContent=c.name;
+ $('detailMeta').textContent=[c.grade,c.category,c.number].filter(Boolean).join(' / ');
+ $('detailCurrent').innerHTML=(Number(c.priceNow)>0?money(Number(c.priceNow)):'価格未確認')+'<small>掲載時点の参考価格</small>';
+ $('detailAsOf').textContent=(c.asOfDate?'出典更新日：'+c.asOfDate:'')+(c.period?' / '+c.period:'');
+ const photo=$('detailPhoto');photo.innerHTML='';photo.className='card-photo detail-photo';const image=imageElement(c);photo.innerHTML=image.innerHTML;photo.classList.toggle('has-photo',image.classList.contains('has-photo'));
+ overlay.hidden=false;document.body.classList.add('modal-open');$('detailClose').focus();renderGraph();
+}
+function closeDetail(){if($('detailOverlay').hidden)return;$('detailOverlay').hidden=true;document.body.classList.remove('modal-open');detailRecord=null;if(focusBeforeDetail?.focus)focusBeforeDetail.focus()}
+function renderGraph(){
+ const r=detailRecord;if(!r)return;const base=cardBase(r);const anchor=validDateStr(r.asOfDate)?r.asOfDate:latestDate();
+ document.querySelectorAll('[data-range]').forEach(b=>{b.classList.toggle('active',Number(b.dataset.range)===detailRange);b.setAttribute('aria-pressed',String(Number(b.dataset.range)===detailRange))});
+ const daily=recentDaily(base,detailRange,anchor);let info='',foot='',plot='';
+ if(daily.length>=2){info='実際に登録された日付別PSA10価格（'+daily.length+'観測点）';foot='記録のある日だけ点を表示しています。間の取引日・価格は不明です。';plot=makeSvgChart(daily,'登録された日別PSA10取引価格');}
+ else if(detailRange===7){
+  if(hasData(r)){info='前週7日間と直近7日間の成約中央値を比較';foot='※これは「7日間の日次推移」ではなく、2つの7日集計期間の中央値比較です。日次データはまだ'+(daily.length?'1件':'ありません')+'。';plot=weeklyComparisonChart(r)}
+  else{info='7日間の価格推移';foot='日付別の正確なPSA10価格記録を2件以上登録すると折れ線グラフを表示します。';plot='<div class="graph-empty"><strong>日次データを蓄積中</strong>出典を確認できた日次取引が2件以上必要です。</div>'}
+ }else{
+  const weekly=weeklyPoints(base,anchor);
+  if(weekly.length>=2){info='直近30日内の週次中央値の観測記録（'+weekly.length+'点）';foot='※週次の7日成約中央値です。毎日の成約価格を表すものではありません。線の間の値は不明です。';plot=makeSvgChart(weekly,'週次中央値の記録')}else{info='30日間の相場推移';foot='30日内の確認済み価格記録が2件以上になったら折れ線グラフが表示されます。';plot='<div class="graph-empty"><strong>30日分の観測データが不足しています</strong>現在ある出典付きデータを継続して蓄積しています。</div>'}
+ }
+ $('graphContext').textContent=info;$('graphPlot').innerHTML=plot;$('graphFoot').textContent=foot;
+ const src=safeUrl(r.sourceUrl),dSrc=daily.length>1?daily[daily.length-1]:null;
+ const u=dSrc?safeUrl(dSrc.sourceUrl):src;
+ $('graphSource').innerHTML='出典：'+esc(dSrc?.source||r.source||'出典未登録')+(u?'　<a href="'+esc(u)+'" target="_blank" rel="noopener noreferrer">価格の出典を開く ↗</a>':'');
+}
+$('detailClose').addEventListener('click',closeDetail);
+$('detailOverlay').addEventListener('click',e=>{if(e.target===$('detailOverlay'))closeDetail()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();if(e.key==='Tab'&&!$('detailOverlay').hidden){let els=Array.from($('detailPanel').querySelectorAll('button,a[href]')).filter(x=>!x.disabled);if(!els.length)return;let first=els[0],last=els[els.length-1];if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
+$('detailPanel').addEventListener('click',e=>{const b=e.target.closest('[data-range]');if(!b)return;detailRange=Number(b.dataset.range);renderGraph()});
+function populateHistoryCards(){
+ const sel=$('history-card');const current=sel.value;
+ sel.innerHTML=state.cards.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}（${esc(c.number)}）</option>`).join('');
+ if(state.cards.some(c=>c.id===current))sel.value=current;
+ renderHistoryEntries();
+}
+function renderHistoryEntries(){
+ const c=state.cards.find(x=>x.id===$('history-card').value);if(!c){$('historyEntries').textContent='カードを選択してください';return}
+ $('historyEntries').innerHTML=(c.dailyHistory||[]).length?(c.dailyHistory||[]).slice().sort((a,b)=>b.date.localeCompare(a.date)).map(v=>`<div class="history-entry"><span>${esc(v.date)}：${money(Number(v.price))} <span class="inline-small">${esc(v.source)}</span></span><button type="button" data-del-date="${esc(v.date)}">削除</button></div>`).join(''):'<p class="history-input-note">現在、日付別の実測データはありません。</p>';
+}
+$('history-card').addEventListener('change',renderHistoryEntries);
+$('historyEntries').addEventListener('click',e=>{let b=e.target.closest('[data-del-date]');if(!b)return;const c=state.cards.find(x=>x.id===$('history-card').value);if(c&&confirm('この日付の観測記録を削除しますか？')){c.dailyHistory=(c.dailyHistory||[]).filter(x=>x.date!==b.dataset.delDate);renderHistoryEntries();setMsg('日次データを削除しました。「公開用HTMLを保存」で反映できます。')}});
+$('saveHistory').addEventListener('click',()=>{
+ const c=state.cards.find(x=>x.id===$('history-card').value);const date=field('history-date'),price=Number(field('history-price')),source=field('history-source'),url=field('history-url');
+ if(!c||!validDateStr(date)||!Number.isInteger(price)||price<=0||price>=1e9||!source||!safeUrl(url)){setMsg('⚠ 日付・正の整数価格・出典・HTTPS出典URLを正確に入力してください。');return}
+ const todayLocal=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Tokyo',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+ if(date>todayLocal){setMsg('⚠ 未来の日付は登録できません。');return}
+ c.dailyHistory=(c.dailyHistory||[]).filter(x=>x.date!==date);c.dailyHistory.push({date,price,source,sourceUrl:url});c.dailyHistory.sort((a,b)=>a.date.localeCompare(b.date));
+ renderHistoryEntries();render();setMsg('✅ '+esc(c.name)+' の'+date+'の実際の価格を登録しました。HTMLを保存しGitHubで更新してください。');
+});
+/* Extend original render; keep site source data as the single source of truth. */
+const baseRender=render;
+render=function(){baseRender();const priced=priceList().filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter));const watch=state.cards.filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter));enhanceRows(priced,watch);populateHistoryCards()};
+
 render();
 })();
 </script>
