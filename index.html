@@ -149,12 +149,33 @@ body.modal-open{overflow:hidden}
 .card-photo.affiliate-image .card-cover{display:none}
 .card-photo.affiliate-image .rakuten-original-tag{display:flex;align-items:center;justify-content:center;width:100%;height:100%;overflow:hidden}
 .card-photo.affiliate-image .rakuten-original-tag a{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
-.card-photo.affiliate-image .rakuten-original-tag img{width:auto!important;height:auto!important;max-width:100%!important;max-height:100%!important;object-fit:contain!important;border:0}
+.card-photo.affiliate-image .rakuten-original-tag img{display:inline-block}
 .card-photo.affiliate-image::after{content:"";display:none}
 .rakuten-photo-note{font-size:11px;margin:4px 0 0;color:#64708a}
 .rakuten-photo-help{background:#fffaf1;border:1px solid #ead4a5;padding:12px;border-radius:12px;font-size:12px;color:#5f543d;line-height:1.7}
 .rakuten-photo-help code{font-size:11px}
 #e-rakuten-html{width:100%;min-height:100px;padding:11px;border:1px solid #cbd3e3;border-radius:9px;font-size:12px;resize:vertical}
+
+/* Rakuten product images are only shown in a full-size original HTML advertisement slot.
+   Do NOT change image width, height or generated affiliate HTML in CSS. */
+.detail-affiliate{margin:14px 0;padding:16px;background:#fffdf7;border:1px solid #f0d7aa;border-radius:14px;overflow-x:auto;text-align:center}
+.detail-affiliate[hidden]{display:none}
+.detail-affiliate strong{font-size:13px;display:block;color:#543a1f}
+.detail-affiliate .sponsor-image{margin:12px auto 5px;width:max-content;max-width:none}
+.detail-affiliate .sponsor-caption{font-size:11px;color:#7c6348;line-height:1.7;margin:6px 0}
+.photo-workflow{background:#f3faff;border:1px solid #c8def2;border-radius:14px;padding:16px;margin:12px 0;color:#173954}
+.photo-workflow h3{margin:0 0 5px;font-size:17px}
+.photo-workflow p{font-size:12px;margin:5px 0 10px}
+.photo-workflow label{display:block;font-size:12px;font-weight:bold}
+.photo-workflow select{display:block;width:100%;margin:5px 0 10px;padding:9px;border:1px solid #a4c2d9;border-radius:8px;background:white}
+.photo-workflow .photo-buttons{display:flex;flex-wrap:wrap;gap:8px}
+.photo-workflow .photo-buttons button,.photo-workflow .photo-buttons a{display:inline-flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:8px;background:#203b61;color:white;text-decoration:none;border:0;font-size:12px;font-weight:700;cursor:pointer}
+.photo-workflow .photo-buttons a{background:#fff;color:#203b61;border:1px solid #7894bd}
+.photo-workflow .candidate{font-size:12px;margin:10px 0 0;line-height:1.6}
+.photo-workflow .candidate a{text-decoration:underline;color:#144b89}
+.photo-workflow .note{font-size:11px;color:#5b6980;margin-top:10px}
+.verified-confirm{display:flex!important;align-items:flex-start;gap:8px;background:#fff5dc;border-radius:8px;padding:9px;margin-top:9px;font-size:12px;font-weight:600!important}
+.verified-confirm input{margin-top:3px;flex:none}
 </style>
 <script id="site-data" type="application/json">
 {
@@ -2577,9 +2598,23 @@ body.modal-open{overflow:hidden}
      <div class="field"><label>価格の出典（必須）</label><input id="e-source" placeholder="例：販売成約履歴" /></div>
      <div class="field full"><label>価格の出典URL（推奨）</label><input type="url" id="e-source-url" placeholder="https://..." /></div>
      <div class="field full"><label>権利確認済み画像のURLまたはイラストパス</label><input id="e-image-url" placeholder="例：card-images/05-sm11-011-094.webp" /><p class="inline-small">現在のイメージイラストが登録済みです。実物カードの写真にする場合は使用許可を得た画像に限ります。</p></div>
-<div class="field full"><label>楽天アフィリエイト「画像リンク」の公式HTML（任意）</label><textarea id="e-rakuten-html" placeholder="楽天アフィリエイトの商品リンク作成画面から、画像のみのHTMLを改変せずに貼り付け"></textarea><p class="inline-small">このカードと番号まで完全一致する楽天商品の「画像リンク」を貼り付けてください。公式画像リンクが優先表示されます。広告リンクは元のHTMLのまま保管します。一般の商品ページURLやフリマ画像は貼らないでください。</p></div>
+<div class="field full"><label>楽天アフィリエイト「画像リンク」の公式HTML（任意）</label><textarea id="e-rakuten-html" placeholder="楽天アフィリエイトの商品リンク作成画面から、画像のみのHTMLを改変せずに貼り付け"></textarea>
+      <label class="verified-confirm"><input type="checkbox" id="e-rakuten-verified"/> この商品はカード名・番号・PSA10鑑定状態が一致すると商品ページで確認しました</label><p class="inline-small">このカードと番号まで完全一致する楽天商品の「画像リンク」を貼り付けてください。公式画像リンクが優先表示されます。広告リンクは元のHTMLのまま保管します。一般の商品ページURLやフリマ画像は貼らないでください。</p></div>
     </div>
     <div class="edit-action"><button id="saveCard">カードを保存</button><button class="alt" id="clearCard">入力をクリア</button></div>
+    <section class="photo-workflow" id="photoWorkflow" aria-label="楽天画像登録作業ナビ">
+      <h3>📷 実物写真の登録ナビ</h3>
+      <p id="photoProgress">楽天公式画像リンクの登録状況を確認しています…</p>
+      <label for="photoQuickSelect">カードを選択（カード番号・PSA10を確認）</label>
+      <select id="photoQuickSelect"></select>
+      <div class="photo-buttons">
+        <button type="button" id="photoPickBtn">このカードを編集する</button>
+        <button type="button" id="photoSearchBtn">楽天で候補を探す</button>
+        <a href="https://affiliate.rakuten.co.jp/" target="_blank" rel="noopener noreferrer">楽天で公式画像リンクを作成 ↗</a>
+      </div>
+      <p class="candidate" id="photoKnownCandidate"></p>
+      <p class="note">候補商品の画像は自動転載しません。カードの名前・カード番号・鑑定状態を商品ページで確認し、楽天アフィリエイトが発行した「画像のみ」HTMLをそのまま下の欄へ貼り付けます。楽天商品は価格・在庫が変わります。</p>
+    </section>
     <div class="rakuten-photo-help"><strong>📣 実物写真を優先する方法：</strong>楽天アフィリエイトで該当カードの「画像のみ」リンクを生成し、上のHTML欄に原文を貼り付けます。<strong>画像をスクリーンショット・切り抜き・加工して掲載しない</strong>でください。表示枠は商品の広告です。登録したカードが商品と同一名称・番号・グレードであることもご自身で確認してください。画像が未登録のカードは、区別のため「イメージイラスト」を表示します。<br><a href="https://affiliate.rakuten.co.jp/guideline/rule/" target="_blank" rel="noopener noreferrer">楽天アフィリエイト公式ガイドライン ↗</a></div>
 <div class="image-guide"><strong>📷 カード画像の追加方法</strong>：画像の使用権限を確認した後、GitHubの <code>card-images/</code> に画像を保存し、そのファイルパスを上の「画像URL」に入力してください。未登録のものはオリジナルのイメージデザインが表示されます。<br>※カード自体を撮影しても、カードに描かれた絵柄の著作権が自由に使えるわけではありません。 <a href="https://www.pokemon-card.com/policy.html" target="_blank" rel="noopener noreferrer">公式サイトの利用条件 ↗</a></div>
 <div class="image-bulk"><h4>画像パスをまとめて登録（任意）</h4>
@@ -2650,6 +2685,7 @@ SM9 107/095,card-images/erika.webp"></textarea>
        <div id="detailAsOf" class="inline-small"></div>
       </div>
     </div>
+    <div id="detailAffiliate" class="detail-affiliate" hidden></div>
     <div class="detail-graph">
       <div class="detail-tabs" role="group" aria-label="価格表示期間">
        <button type="button" data-range="7" class="active">7日</button>
@@ -2691,7 +2727,7 @@ $('market-description').textContent=(selectedPeriod==='latest'?'最新の確認�
 const days=(new Date().getTime()-new Date(date+'T00:00:00+09:00').getTime())/86400000;
 const ageText=days>3?'⚠ 掲載データが古くなっています。最新価格は各出典で確認してください。':'掲載価格の出典日を確認してください。';
 $('market-status').textContent=(info.lastSuccessfulSync?'自動更新成功：'+info.lastSuccessfulSync+'。':'自動取得は停止中です。')+' '+(selectedPeriod==='latest'?ageText:'これは過去週の成約中央値の履歴です。現在の販売価格ではありません。')+' 価格は各出典で再確認してください。';
-$('imageAvailability').textContent='画像登録：'+state.cards.filter(c=>Boolean(safeImage(c.imageUrl))).length+'/'+state.cards.length+'銘柄。未登録はオリジナルのイメージイラストで表示しています。';
+$('imageAvailability').textContent='楽天の実物商品画像広告：'+state.cards.filter(c=>Boolean(parseRakutenImageHtml(c.rakutenImageHtml))).length+'/'+state.cards.length+'銘柄。未登録のカードにはオリジナルイラストを表示します。';
 $('metric-priced').textContent=state.cards.filter(hasData).length+'件';$('metric-psa').textContent=state.cards.filter(c=>c.grade==='PSA10').length+'件';$('metric-total').textContent=state.cards.length+'件';
 let priced=priceList().filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter));
 $('rankingRows').innerHTML=priced.length?priced.map((c,i)=>{let delta=change(c);let src= safeUrl(c.sourceUrl);return `<div class="rank-row"><div class="rank-index ${i<3?'top':''}">${i+1}${i===0?'<span class="medal">🏅</span>':''}</div><div><div class="card-name">${esc(c.name)}</div><div class="meta">${meta(c)}${c.weeklyTrades?`<span class="weekly-trades">週次レポート掲載の取引 ${Number(c.weeklyTrades)}件</span>`:''}</div>${src?`<a class="source-link" href="${esc(src)}" target="_blank" rel="noopener noreferrer">${esc(c.source)} / ${esc(selectedPeriod==='latest'?c.asOfDate:(c.period||c.asOfDate))} ↗</a>`:`<div class="source-link" style="text-decoration:none">${esc(c.source)} / ${esc(selectedPeriod==='latest'?c.asOfDate:(c.period||c.asOfDate))}</div>`}</div><div class="price-num">${money(num(c.priceNow))}<span class="mobile-change ${delta>0?'up':delta<0?'down':'flat'}">${delta>0?'+':''}${delta.toFixed(1)}%</span></div><div class="price-num price-prev">${money(num(c.pricePast))}</div><div class="change-wrap"><div class="change ${delta>0?'up':delta<0?'down':'flat'}">${delta>0?'+':''}${delta.toFixed(1)}%</div><div class="tiny muted">${delta>0?'↑ 上昇':delta<0?'↓ 下落':'→ 横ばい'}</div></div></div>`}).join(''):`<div class="empty-state"><div class="empty-icon">📊</div><h3>${priceList().length?'条件に合うデータがありません':'価格データを準備中です'}</h3><p>カード名と比較価格・出典・確認日を登録すると、ここに上昇率ランキングが自動表示されます。現在は実際の成約価格が未登録のため、架空の高騰率は掲載していません。</p></div>`;
@@ -2708,11 +2744,11 @@ $('categoryFilter').addEventListener('click',e=>{const b=e.target.closest('butto
 function field(id){return $(id).value.trim()}
 function setMsg(msg){$('editorMsg').textContent=msg}
 const fields=['name','number','category','grade','past','now','date','source','source-url','image-url','rakuten-html'];
-function clearFields(){editingId=null;for(const f of fields){let el=$('e-'+f);if(!el)continue;el.value=''}$('e-category').value='トレーナーズ';$('e-grade').value='PSA10';$('saveCard').textContent='カードを保存';}
-function loadCard(id){const c=state.cards.find(x=>x.id===id);if(!c)return;editingId=c.id;const vals={'name':c.name,'number':c.number,'category':c.category,'grade':c.grade,'past':c.pricePast??'','now':c.priceNow??'','date':c.asOfDate,'source':c.source,'source-url':c.sourceUrl,'image-url':c.imageUrl||'','rakuten-html':c.rakutenImageHtml||''};for(const f of fields)$('e-'+f).value=vals[f]??'';$('saveCard').textContent='変更を保存';$('e-name').focus();setMsg('カードを編集中です。変更後は「公開用HTMLを保存」してください。')}
+function clearFields(){editingId=null;for(const f of fields){let el=$('e-'+f);if(!el)continue;el.value=''}$('e-category').value='トレーナーズ';$('e-grade').value='PSA10';$('saveCard').textContent='カードを保存';$('e-rakuten-verified').checked=false;}
+function loadCard(id){const c=state.cards.find(x=>x.id===id);if(!c)return;editingId=c.id;const vals={'name':c.name,'number':c.number,'category':c.category,'grade':c.grade,'past':c.pricePast??'','now':c.priceNow??'','date':c.asOfDate,'source':c.source,'source-url':c.sourceUrl,'image-url':c.imageUrl||'','rakuten-html':c.rakutenImageHtml||''};for(const f of fields)$('e-'+f).value=vals[f]??'';$('saveCard').textContent='変更を保存';$('e-rakuten-verified').checked=Boolean(c.rakutenImageHtml);$('e-name').focus();setMsg('カードを編集中です。変更後は「公開用HTMLを保存」してください。')}
 function renderEditorCards(){$('editorCards').innerHTML=state.cards.map(c=>`<div><span>${esc(c.name)} <span class="muted tiny">${esc(c.grade)}</span></span><span class="buttons"><button data-edit="${esc(c.id)}">編集</button><button data-delete="${esc(c.id)}">削除</button></span></div>`).join('')}
 $('editorCards').addEventListener('click',e=>{const eb=e.target.closest('[data-edit]');const db=e.target.closest('[data-delete]');if(eb)loadCard(eb.dataset.edit);if(db&&window.confirm('このカードを削除しますか？')){state.cards=state.cards.filter(c=>c.id!==db.dataset.delete);if(editingId===db.dataset.delete)clearFields();render();setMsg('カードを削除しました。保存ファイルを出力すると反映されます。')}});
-$('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){setMsg('⚠ カード名を入力してください。');return}let past=field('e-past'),now=field('e-now'),date=field('e-date'),source=field('e-source'),srcUrl=field('e-source-url');if((past||now)&&(!(Number(past)>0&&Number(now)>0)||!date||!source)){setMsg('⚠ 価格を掲載するには、2つの比較価格・確認日・出典をすべて登録してください。');return}if(srcUrl&&!safeUrl(srcUrl)){setMsg('⚠ 出典URLはhttps://から始まるURLを入力してください。');return}let item={...(state.cards.find(x=>x.id===editingId)||{}),id:editingId||'card-'+Date.now().toString(36),name,number:field('e-number'),category:field('e-category'),grade:field('e-grade'),pricePast:past?Number(past):null,priceNow:now?Number(now):null,asOfDate:date,source,sourceUrl:srcUrl,imageUrl:field('e-image-url'),rakutenImageHtml:field('e-rakuten-html')};if(item.rakutenImageHtml&&!parseRakutenImageHtml(item.rakutenImageHtml)){setMsg('⚠ 楽天の画像専用アフィリエイトリンクの公式HTML形式だけが使えます。画像URLや商品URLのみでは登録できません。');return}if(item.imageUrl&&!safeImage(item.imageUrl)){setMsg('⚠ 画像はHTTPS URLまたは card-images/ 内の画像パスを指定してください。');return}if(editingId){state.cards=state.cards.map(c=>c.id===editingId?item:c)}else{state.cards.push(item)}clearFields();render();setMsg('✅ カード情報を反映しました。公開用HTMLを保存して再アップロードしてください。')});$('clearCard').addEventListener('click',()=>{clearFields();setMsg('入力欄をクリアしました。')});
+$('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){setMsg('⚠ カード名を入力してください。');return}let past=field('e-past'),now=field('e-now'),date=field('e-date'),source=field('e-source'),srcUrl=field('e-source-url');if((past||now)&&(!(Number(past)>0&&Number(now)>0)||!date||!source)){setMsg('⚠ 価格を掲載するには、2つの比較価格・確認日・出典をすべて登録してください。');return}if(srcUrl&&!safeUrl(srcUrl)){setMsg('⚠ 出典URLはhttps://から始まるURLを入力してください。');return}let item={...(state.cards.find(x=>x.id===editingId)||{}),id:editingId||'card-'+Date.now().toString(36),name,number:field('e-number'),category:field('e-category'),grade:field('e-grade'),pricePast:past?Number(past):null,priceNow:now?Number(now):null,asOfDate:date,source,sourceUrl:srcUrl,imageUrl:field('e-image-url'),rakutenImageHtml:field('e-rakuten-html')};if(item.rakutenImageHtml&&!parseRakutenImageHtml(item.rakutenImageHtml)){setMsg('⚠ 楽天の画像専用アフィリエイトリンクの公式HTML形式だけが使えます。画像URLや商品URLのみでは登録できません。');return}if(item.rakutenImageHtml&&!$('e-rakuten-verified').checked){setMsg('⚠ カード名・番号・PSA10鑑定状態の一致を確認してチェックしてください。');return}if(item.imageUrl&&!safeImage(item.imageUrl)){setMsg('⚠ 画像はHTTPS URLまたは card-images/ 内の画像パスを指定してください。');return}if(editingId){state.cards=state.cards.map(c=>c.id===editingId?item:c)}else{state.cards.push(item)}clearFields();render();setMsg('✅ カード情報を反映しました。公開用HTMLを保存して再アップロードしてください。')});$('clearCard').addEventListener('click',()=>{clearFields();setMsg('入力欄をクリアしました。')});
 function adLoad(){let a=state.ads[Number(field('ad-select'))];$('ad-title').value=a.title;$('ad-desc').value=a.description;$('ad-provider').value=a.provider;$('ad-url').value=a.url||''}
 $('ad-select').addEventListener('change',adLoad);$('saveAd').addEventListener('click',()=>{let u=field('ad-url');if(u&&!safeUrl(u)){setMsg('⚠ 広告URLはhttps://から始まるリンクを登録してください。');return}let a=state.ads[Number(field('ad-select'))];a.title=field('ad-title');a.description=field('ad-desc');a.provider=field('ad-provider');a.url=u;render();setMsg('✅ 広告を更新しました。必ず広告主の規約に従ってリンクを設置してください。')});
 $('site-operator').value=state.operator;$('site-contact').value=state.contact;$('saveOperator').addEventListener('click',()=>{let em=field('site-contact');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setMsg('⚠ メールアドレスの形式を確認してください。');return}state.operator=field('site-operator')||'運営者名を登録してください';state.contact=em;render();setMsg('✅ 運営情報を更新しました。公開用HTMLを保存してください。')});
@@ -2773,22 +2809,8 @@ function imageElement(card,extraClass=''){
  const serial=document.createElement('div');serial.className='cover-serial';serial.textContent=series;
  const caption=document.createElement('div');caption.className='cover-disclosure';caption.textContent='画像未登録';
  bottom.append(rarity,name);cover.append(top,mark,bottom,serial,caption);item.append(cover);
- const official=parseRakutenImageHtml(base.rakutenImageHtml);
- if(official){
-   const holder=document.createElement('div');holder.className='rakuten-original-tag';
-   // Official image link HTML is rendered verbatim without rebuilding or rewriting the tag.
-   holder.innerHTML=official.markup;
-   // If a merchant removes an image, show the original local art rather than a broken link.
-   const image=holder.querySelector('img');
-   if(image)image.addEventListener('error',()=>{
-     holder.remove();item.classList.remove('affiliate-image','has-photo');
-     const fallback=safeImage(base.imageUrl);
-     if(fallback){const replacement=document.createElement('img');replacement.src=fallback;replacement.alt=label+'のイメージイラスト';replacement.loading='lazy';item.classList.add('has-photo');item.append(replacement)}
-   },{once:true});
-   item.classList.add('affiliate-image','has-photo');item.setAttribute('aria-label',label+' の楽天商品画像広告（タップで楽天市場へ移動）');
-   item.append(holder);
-   return item;
- }
+ // In the narrow thumbnails and header keep the original TCG Radar artwork.
+ // Official Rakuten image link HTML is shown at its original size in the separate PR area.
  const src=safeImage(base.imageUrl);
  if(src){
    const im=document.createElement('img');im.src=src;im.alt=label+' の掲載画像';im.loading=extraClass==='detail-photo'?'eager':'lazy';im.decoding='async';
@@ -2808,13 +2830,13 @@ function enhanceRows(priced,watch){
   let content=document.createElement('div');content.className='rank-info-main';
   while(info.firstChild)content.appendChild(info.firstChild);
   info.append(imageElement(c,'rank-photo'),content);
-  if(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)){const pr=document.createElement('small');pr.className='rakuten-photo-note';pr.textContent='PR / 楽天の商品画像広告';content.prepend(pr)}
+  if(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)){const pr=document.createElement('small');pr.className='rakuten-photo-note';pr.textContent='詳細画面に楽天の商品画像広告あり';content.prepend(pr)}
   content.appendChild(detailButton(c));
  });
  Array.from($('watchlist').querySelectorAll('.watch-card')).forEach((r,i)=>{
    const c=watch[i];if(!c)return;
    const placeholder=r.querySelector('.mini-art');if(placeholder)placeholder.replaceWith(imageElement(c));
-   const info=r.children[r.children.length-1];if(info){info.classList.add('watch-info');if(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)){const pr=document.createElement('small');pr.className='rakuten-photo-note';pr.textContent='PR / 楽天の商品画像広告';info.prepend(pr)}info.appendChild(detailButton(c))}
+   const info=r.children[r.children.length-1];if(info){info.classList.add('watch-info');if(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)){const pr=document.createElement('small');pr.className='rakuten-photo-note';pr.textContent='詳細画面に楽天の商品画像広告あり';info.prepend(pr)}info.appendChild(detailButton(c))}
  });
 }
 function validDateStr(v){return /^\d{4}-\d{2}-\d{2}$/.test(String(v||''))&&!isNaN(new Date(String(v)+'T00:00:00+09:00').getTime())}
@@ -2851,10 +2873,23 @@ function openDetail(c){
  focusBeforeDetail=document.activeElement;detailRecord=c;detailRange=7;
  const base=cardBase(c),overlay=$('detailOverlay');
  $('detailTitle').textContent=c.name;
- $('detailMeta').textContent=[c.grade,c.category,c.number].filter(Boolean).join(' / ')+'｜'+(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)?'楽天市場の商品画像・PR広告':(cardBase(c).imageType==='ai-art'?'AI生成イメージ（実物ではありません）':'オリジナルのイメージ画像（実物ではありません）'));
+ $('detailMeta').textContent=[c.grade,c.category,c.number].filter(Boolean).join(' / ')+'｜'+(parseRakutenImageHtml(cardBase(c).rakutenImageHtml)?'イメージ画像｜下に楽天の商品写真広告あり':(cardBase(c).imageType==='ai-art'?'AI生成イメージ（実物ではありません）':'オリジナルのイメージ画像（実物ではありません）'));
  $('detailCurrent').innerHTML=(Number(c.priceNow)>0?money(Number(c.priceNow)):'価格未確認')+'<small>掲載時点の参考価格</small>';
  $('detailAsOf').textContent=(c.asOfDate?'出典更新日：'+c.asOfDate:'')+(c.period?' / '+c.period:'');
  const photo=$('detailPhoto');const image=imageElement(c,'detail-photo');image.id='detailPhoto';photo.replaceWith(image);
+ const adArea=$('detailAffiliate');adArea.replaceChildren();
+ const official=parseRakutenImageHtml(base.rakutenImageHtml);
+ adArea.hidden=!official;
+ if(official){
+   const heading=document.createElement('strong');heading.textContent='PR｜楽天市場の商品写真（アフィリエイト広告）';
+   const holder=document.createElement('div');holder.className='sponsor-image';
+   // IMPORTANT: Original affiliate HTML and original image dimensions are not modified.
+   holder.innerHTML=official.markup;
+   const foot=document.createElement('p');foot.className='sponsor-caption';foot.textContent='楽天の販売商品へのリンクです。相場集計値とは異なり、価格・在庫・出品状態は商品ページでご確認ください。';
+   adArea.append(heading,holder,foot);
+   const adImg=holder.querySelector('img');if(adImg)adImg.addEventListener('error',()=>{adArea.hidden=true;},{once:true});
+ }
+
  overlay.hidden=false;document.body.classList.add('modal-open');$('detailClose').focus();renderGraph();
 }
 function closeDetail(){if($('detailOverlay').hidden)return;$('detailOverlay').hidden=true;document.body.classList.remove('modal-open');detailRecord=null;if(focusBeforeDetail?.focus)focusBeforeDetail.focus()}
@@ -2924,6 +2959,45 @@ render=function(){baseRender();const priced=priceList().filter(c=>(filter==='す
 
 render();
 })();
+
+/* PHOTO WORKFLOW: user chooses their own, unmodified official affiliate code. */
+const photoCandidatePages={
+ 'M2 116/080':{
+  name:'メガリザードンXex MUR / PSA10',
+  url:'https://item.rakuten.co.jp/treasure-eight/002-073-260828-2002/'
+ }
+};
+function photoRegisterCard(){return state.cards.find(c=>c.id===$('photoQuickSelect').value)}
+function updatePhotoHelper(){
+ const progress=$('photoProgress');if(!progress)return;
+ const registered=state.cards.filter(c=>Boolean(parseRakutenImageHtml(c.rakutenImageHtml))).length;
+ progress.textContent='公式画像リンク登録済み：'+registered+' / '+state.cards.length+'銘柄。未登録は従来のイラストを表示。';
+ const selected=$('photoQuickSelect').value;
+ $('photoQuickSelect').innerHTML=state.cards.map(c=>'<option value="'+esc(c.id)+'">'+esc(c.name+'｜'+c.number+'｜'+c.grade)+(parseRakutenImageHtml(c.rakutenImageHtml)?' ✅':'')+'</option>').join('');
+ if(state.cards.some(c=>c.id===selected))$('photoQuickSelect').value=selected;
+ updatePhotoCandidate();
+}
+function updatePhotoCandidate(){
+ const c=photoRegisterCard(),slot=$('photoKnownCandidate');if(!c){slot.textContent='';return}
+ const candidate=photoCandidatePages[c.number];
+ slot.replaceChildren();
+ if(candidate){
+  const b=document.createElement('strong');b.textContent='商品候補（※広告リンクではありません）：';
+  const a=document.createElement('a');a.href=candidate.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=candidate.name+' の楽天市場商品ページを確認 ↗';
+  slot.append(b,document.createTextNode(' '),a);
+ }else{slot.textContent='楽天で該当カードが見つからなければ、イラストのままにします。';}
+}
+$('photoQuickSelect').addEventListener('change',updatePhotoCandidate);
+$('photoPickBtn').addEventListener('click',()=>{const c=photoRegisterCard();if(!c)return;loadCard(c.id);$('e-rakuten-html').scrollIntoView({behavior:'smooth',block:'center'});});
+$('photoSearchBtn').addEventListener('click',()=>{
+ const c=photoRegisterCard();if(!c)return;
+ const query=[c.name,c.number,c.grade].join(' ');
+ const url='https://search.rakuten.co.jp/search/mall/'+encodeURIComponent(query)+'/';
+ window.open(url,'_blank','noopener,noreferrer');
+});
+$('saveCard').addEventListener('click',updatePhotoHelper);
+$('clearCard').addEventListener('click',updatePhotoHelper);
+updatePhotoHelper();
 </script>
 </body>
 </html>
