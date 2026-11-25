@@ -1,6 +1,34 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google tag (gtag.js) : TCG Radar -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8DT48TCM1L"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-8DT48TCM1L');
+</script>
+<!-- 楽天の発行した広告コードを変更せず、サイト側で商品別クリックを測定 -->
+<script>
+document.addEventListener('click', function(event) {
+  var link = event.target && event.target.closest ? event.target.closest('a[href]') : null;
+  if (!link || typeof window.gtag !== 'function') return;
+  var targetUrl;
+  try { targetUrl = new URL(link.href, location.href); } catch (err) { return; }
+  if (targetUrl.hostname !== 'hb.afl.rakuten.co.jp' && targetUrl.hostname !== 'a.r10.to') return;
+  var destination = targetUrl.searchParams.get('pc') || '';
+  var product = destination.includes('/futaba-corp/cardcase/') ? 'degard_psa_case'
+    : destination.includes('/supplement-life/smr-2/') ? 'samurai_sleeve_150'
+    : destination.includes('/rimina/r-182ocshk01-5/') ? 'box_protection_case'
+    : 'rakuten_other';
+  window.gtag('event', 'affiliate_click', {
+    affiliate_platform: 'rakuten',
+    affiliate_product: product,
+    transport_type: 'beacon'
+  });
+}, true);
+</script>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="theme-color" content="#0d1730" />
@@ -212,7 +240,7 @@
 <section class="wrap section" id="faq"><div class="label">QUESTIONS</div><h2>よくある質問</h2><div class="faq"><details><summary>PSA10のカードはマグネットローダーに入れますか？</summary><p>PSA10鑑定品はPSAのケースに封入されています。一般的な未鑑定カード用ローダーではなく、PSAケースの外寸に対応するスリーブやスタンドを選んでください。</p></details><details><summary>未開封BOXなら保護ケースはどれでも合いますか？</summary><p>商品によってBOXのサイズが異なるため、保護ケースの対応シリーズ・縦横高さを確認してください。写真が似ていても同じサイズとは限りません。</p></details><details><summary>サイトに表示されている金額は最新の販売価格ですか？</summary><p>いいえ。トレカレーダーのランキング価格は出典付きの過去の週次参考値です。商品販売価格や在庫はリンク先で確認してください。</p></details><details><summary>掲載中のPR商品は実際に使って検証していますか？</summary><p>いいえ。現時点で実使用レビューを行ったという表示はしていません。選び方の一般的な観点から紹介しています。</p></details></div></section>
 <section class="wrap editor" id="editor" hidden><div class="label">OWNER ONLY / LOCAL EXPORT</div><h2>🛠 商品リンクを登録する</h2><p class="editor-note">この編集欄はパスワード保護ではありません。ここで変更しても公開ページは直接変わりません。「HTMLを保存」で新しい <code>products.html</code> をダウンロードし、GitHubへアップロードしてください。秘密情報は入力しないでください。</p><div id="editorRows"></div><div class="editbuttons"><button class="btn" type="button" id="saveDraft">画面に反映</button><button class="btn" type="button" id="exportHtml">⬇ products.html を保存</button></div><p class="toast" id="editorToast" role="status"></p></section>
 </main>
-<footer class="footer"><div class="wrap row"><div><strong>↗ トレカレーダー</strong><p class="fade">ポケモンカードの価格変動・PSA10・保管用品を紹介する非公式のファン向け情報サイトです。株式会社ポケモン、任天堂、PSA、楽天市場の公式運営サイトではありません。</p><a href="/index.html#ranking">高騰ランキングに戻る</a></div><div><strong>広告について</strong><p class="fade">このページには楽天アフィリエイト広告が含まれます。広告を通じて成果報酬が発生することがあります。内容は特定商品の性能や購入結果を保証するものではありません。</p><a class="footer-edit" href="?edit=1#editor">運営者向けリンク編集</a></div></div></footer>
+<footer class="footer"><div class="wrap row"><div><strong>↗ トレカレーダー</strong><p class="fade">ポケモンカードの価格変動・PSA10・保管用品を紹介する非公式のファン向け情報サイトです。株式会社ポケモン、任天堂、PSA、楽天市場の公式運営サイトではありません。</p><a href="/index.html#ranking">高騰ランキングに戻る</a></div><div><strong>広告について</strong><p class="fade">このページには楽天アフィリエイト広告が含まれます。広告を通じて成果報酬が発生することがあります。内容は特定商品の性能や購入結果を保証するものではありません。</p><p class="fade">アクセス解析にはGoogle Analytics 4を利用し、ページの閲覧状況と楽天広告のクリックを集計します。Cookie等が利用される場合があります。<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Googleのプライバシーポリシー</a>をご参照ください。</p><a class="footer-edit" href="?edit=1#editor">運営者向けリンク編集</a></div></div></footer>
 <script>
 (()=>{'use strict';
 const raw=document.getElementById('catalog-json');
