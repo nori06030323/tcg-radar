@@ -2685,7 +2685,7 @@ body.modal-open{overflow:hidden}
 </head>
 <body>
 <div class="notice">PR / このサイトはアフィリエイト広告を利用しています。広告経由の購入等で運営者が紹介報酬を受け取ることがあります。</div>
-<div class="edit-wrap open" id="editor">
+<div class="edit-wrap" id="editor">
  <div class="container edit-inner">
   <div class="edit-header"><div><h2>🛠 運営者用・編集画面</h2><p>ここでの変更は公開サイトに直接反映されません。編集後に「公開用HTMLを保存」して再アップロードします。</p></div><button class="btn" id="exportBtn">⬇ 公開用HTMLを保存</button></div>
   <p class="admin-tip"><strong>安全上の注意：</strong>この画面はパスワード認証ではありません。ただし閲覧者が操作しても公開中のサーバーは書き換わりません。個人情報や秘密鍵は入力しないでください。</p>
@@ -2858,8 +2858,9 @@ $('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){s
 function adLoad(){let a=state.ads[Number(field('ad-select'))];$('ad-title').value=a.title;$('ad-desc').value=a.description;$('ad-provider').value=a.provider;$('ad-url').value=a.url||''}
 $('ad-select').addEventListener('change',adLoad);$('saveAd').addEventListener('click',()=>{let u=field('ad-url');if(u&&!safeUrl(u)){setMsg('⚠ 広告URLはhttps://から始まるリンクを登録してください。');return}let a=state.ads[Number(field('ad-select'))];a.title=field('ad-title');a.description=field('ad-desc');a.provider=field('ad-provider');a.url=u;render();setMsg('✅ 広告を更新しました。必ず広告主の規約に従ってリンクを設置してください。')});
 $('site-operator').value=state.operator;$('site-contact').value=state.contact;$('saveOperator').addEventListener('click',()=>{let em=field('site-contact');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setMsg('⚠ メールアドレスの形式を確認してください。');return}state.operator=field('site-operator')||'運営者名を登録してください';state.contact=em;render();setMsg('✅ 運営情報を更新しました。公開用HTMLを保存してください。')});
-$('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。この1ファイル版なら画像も一緒に保存されます。')});
-if(new URLSearchParams(location.search).has('edit')){$('editor').classList.add('open');adLoad();setMsg('価格・広告リンクを入力し、公開用HTMLを保存すると、再公開できるファイルができます。')}
+$('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);clone.querySelector('#editor').classList.remove('open');clone.querySelector('body').classList.remove('modal-open');clone.querySelector('#detailOverlay').hidden=true;const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。この1ファイル版なら画像も一緒に保存されます。')});
+$('editor').classList.toggle('open',new URLSearchParams(location.search).has('edit'));
+if(new URLSearchParams(location.search).has('edit')){adLoad();setMsg('価格・広告リンクを入力し、公開用HTMLを保存すると、再公開できるファイルができます。')}
 
 /* CARD IMAGE & VERIFIED PRICE CHARTS - no invented daily prices */
 let detailRecord=null, detailRange=7, focusBeforeDetail=null;
