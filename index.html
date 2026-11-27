@@ -2689,7 +2689,7 @@ body.modal-open{overflow:hidden}
  <div class="container edit-inner">
   <div class="edit-header"><div><h2>🛠 運営者用・編集画面</h2><p>ここでの変更は公開サイトに直接反映されません。編集後に「公開用HTMLを保存」して再アップロードします。</p></div><button class="btn" id="exportBtn">⬇ 公開用HTMLを保存</button></div>
   <p class="admin-tip"><strong>安全上の注意：</strong>この画面はパスワード認証ではありません。ただし閲覧者が操作しても公開中のサーバーは書き換わりません。個人情報や秘密鍵は入力しないでください。</p>
-  <div class="editor-grid">
+  <div class="edit-box" style="margin-top:16px"><h3>★ 人気TOP50・一括更新</h3><p>ChatGPTから受け取ったJSONを貼り付けます。初回・週次は50銘柄を入れ替え、毎日は同じ銘柄の販売中最安値を更新します。未確認は null。成約価格とは別集計です。</p><textarea id="bulkPrices" rows="8" style="width:100%;box-sizing:border-box" placeholder="JSONをここに貼り付け"></textarea><div class="edit-action"><button id="bulkReplace" type="button">50銘柄を入れ替え</button><button id="bulkUpdate" type="button">価格だけ更新</button></div><p id="bulkStatus" role="status"></p></div><div class="editor-grid">
    <div class="edit-box">
     <h3>① カード相場・高騰ランキングを編集</h3>
     <div class="field-grid">
@@ -2817,7 +2817,7 @@ const money=v=>v===null||!Number.isFinite(v)?'価格未登録':'¥'+Math.round(v
 function safeUrl(v){try{let u=new URL(v);return u.protocol==='https:'?u.href:''}catch{return ''}}
 function hasData(c){return Number(c.pricePast)>0&&Number(c.priceNow)>0&&!!String(c.source||'').trim()&&!!c.asOfDate}
 function change(c){return c.percentPublished!==undefined?Number(c.percentPublished):((Number(c.priceNow)-Number(c.pricePast))/Number(c.pricePast))*100}
-function latestDate(){return state.cards.filter(hasData).map(c=>c.asOfDate).sort().slice(-1)[0]||'2026-11-22'}
+function latestDate(){return state.cards.filter(c=>state.askingMode?c.priceNow>0:hasData(c)).map(c=>c.asOfDate).sort().slice(-1)[0]||'2026-11-22'}
 function priceList(){
  let entries=selectedPeriod==='latest'?state.cards.filter(c=>hasData(c)&&c.asOfDate===latestDate()):(state.weeklyArchive||[]).filter(c=>c.period===selectedPeriod&&hasData(c));
  entries=entries.filter(c=>direction==='all'||(direction==='up'?change(c)>0:change(c)<0));
@@ -2858,7 +2858,7 @@ $('saveCard').addEventListener('click',()=>{let name=field('e-name');if(!name){s
 function adLoad(){let a=state.ads[Number(field('ad-select'))];$('ad-title').value=a.title;$('ad-desc').value=a.description;$('ad-provider').value=a.provider;$('ad-url').value=a.url||''}
 $('ad-select').addEventListener('change',adLoad);$('saveAd').addEventListener('click',()=>{let u=field('ad-url');if(u&&!safeUrl(u)){setMsg('⚠ 広告URLはhttps://から始まるリンクを登録してください。');return}let a=state.ads[Number(field('ad-select'))];a.title=field('ad-title');a.description=field('ad-desc');a.provider=field('ad-provider');a.url=u;render();setMsg('✅ 広告を更新しました。必ず広告主の規約に従ってリンクを設置してください。')});
 $('site-operator').value=state.operator;$('site-contact').value=state.contact;$('saveOperator').addEventListener('click',()=>{let em=field('site-contact');if(em&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)){setMsg('⚠ メールアドレスの形式を確認してください。');return}state.operator=field('site-operator')||'運営者名を登録してください';state.contact=em;render();setMsg('✅ 運営情報を更新しました。公開用HTMLを保存してください。')});
-$('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);clone.querySelector('#editor').classList.remove('open');clone.querySelector('body').classList.remove('modal-open');clone.querySelector('#detailOverlay').hidden=true;const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。この1ファイル版なら画像も一緒に保存されます。')});
+$('exportBtn').addEventListener('click',()=>{let clone=document.documentElement.cloneNode(true);clone.querySelector('#editor').classList.remove('open');clone.querySelector('#bulkPrices').textContent='';clone.querySelector('#bulkStatus').textContent='';clone.querySelector('body').classList.remove('modal-open');clone.querySelector('#detailOverlay').hidden=true;const json=JSON.stringify(state,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');clone.querySelector('#site-data').textContent='\n'+json+'\n';let html='<!DOCTYPE html>\n'+clone.outerHTML;const blob=new Blob([html],{type:'text/html;charset=utf-8'});let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='index.html';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000);setMsg('✅ index.html を保存しました。この1ファイル版なら画像も一緒に保存されます。')});
 $('editor').classList.toggle('open',new URLSearchParams(location.search).has('edit'));
 if(new URLSearchParams(location.search).has('edit')){adLoad();setMsg('価格・広告リンクを入力し、公開用HTMLを保存すると、再公開できるファイルができます。')}
 
@@ -3099,6 +3099,31 @@ $('photoSearchBtn').addEventListener('click',()=>{
 $('saveCard').addEventListener('click',updatePhotoHelper);
 $('clearCard').addEventListener('click',updatePhotoHelper);
 updatePhotoHelper();
+
+function bulkApply(replace){
+ try{
+ const b=JSON.parse($('bulkPrices').value), date=b.date;
+ if(!validDateStr(date)||!Array.isArray(b.cards)||!b.cards.length||b.cards.length>50)throw Error('日付と1〜50銘柄が必要です');
+ if(replace&&(b.cards.length!==50||!safeUrl(b.rankingUrl)||!String(b.rankingPeriod||'').trim()))throw Error('入れ替えには50銘柄・人気ランキング出典URL・集計期間が必要です');
+ const seen=new Set(), old=new Map(state.cards.map(c=>[normalizedNumber(c.number),c]));
+ const next=b.cards.map((v,i)=>{
+ const key=normalizedNumber(v.number);if(!key||!String(v.name||'').trim()||seen.has(key))throw Error('カード名・番号の不足または重複：'+(i+1));seen.add(key);
+ const prior=old.get(key);if(!replace&&(!prior||prior.priceMode!=='asking'))throw Error('未登録銘柄：'+v.name);
+ const quotes=['snkr','mercari'].map(k=>{const q=v[k];if(q==null)return null;if(!Number.isSafeInteger(q.price)||q.price<=0||!safeUrl(q.url))throw Error('価格・出典URLが不正：'+v.name);return {market:k,price:q.price,url:safeUrl(q.url)}}).filter(Boolean);
+ const best=quotes.sort((a,b)=>a.price-b.price)[0];const history=(prior?.priceMode==='asking'?prior.dailyHistory||[]:[]).filter(x=>x.date!==date);
+ if(best)history.push({date,price:best.price,source:best.market==='snkr'?'スニダン販売中最安値':'メルカリ販売中最安値',sourceUrl:best.url});
+ history.sort((a,b)=>a.date.localeCompare(b.date));const past=history.find(x=>dayStamp(date)-dayStamp(x.date)===7*86400000);
+ return {id:prior?.id||'top-'+key,name:String(v.name),number:String(v.number),grade:'PSA10',category:['トレーナーズ','ポケモン','その他'].includes(v.category)?v.category:'その他',imageUrl:prior?.imageUrl||'',imageType:prior?.imageType||'',imageSource:prior?.imageSource||'',rakutenImageHtml:prior?.rakutenImageHtml||'',verifiedPhoto:prior?.verifiedPhoto||'',priceMode:'asking',pricePast:past?.price??null,priceNow:best?.price??null,asOfDate:date,source:best?'販売中最安値（確認できた市場）':'未確認',sourceUrl:best?.url||'',dailyHistory:history,quotes,popularityRank:replace?i+1:prior.popularityRank};
+ });
+ if(replace&&!confirm('現在の銘柄を50銘柄に入れ替えますか？'))return;
+ state.cards=replace?next:state.cards.map(c=>next.find(n=>n.id===c.id)||c);state.weeklyArchive=[];state.marketInfo={};state.askingMode=true;if(replace)state.popularity={url:safeUrl(b.rankingUrl),period:String(b.rankingPeriod)};selectedPeriod='latest';clearFields();render();updatePhotoHelper();$('bulkStatus').textContent='更新完了：'+next.length+'銘柄。公開用HTMLを保存してください。';$('bulkPrices').value='';
+ }catch(e){$('bulkStatus').textContent='更新中止：'+e.message;}
+}
+$('bulkReplace').addEventListener('click',()=>bulkApply(true));$('bulkUpdate').addEventListener('click',()=>bulkApply(false));
+const oldRender=render;render=function(){oldRender();if(!state.askingMode)return; $('weekSelect').innerHTML='<option value="latest">最新確認分</option>'; $('market-description').textContent='人気50銘柄の販売中最安値。成約価格ではありません。変動率は7日前の観測値と比較。';$('market-status').textContent='手動調査・更新。未確認価格は表示しません。';$('market-datestamp').textContent='確認日 '+(state.cards.map(c=>c.asOfDate).sort().pop()||'未確認');document.querySelectorAll('.pane-head span')[2].textContent='販売中最安値';document.querySelectorAll('.pane-head span')[3].textContent='7日前';$('metric-priced').textContent=state.cards.filter(c=>c.priceNow>0).length+'件';$('watchlist').querySelectorAll('.watch-card').forEach((el,i)=>{const c=state.cards.filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter))[i];if(!c)return;const info=el.querySelector('.watch-info');const p=info.querySelector('p');if(p)p.textContent='人気 '+c.popularityRank+'位 / '+money(c.priceNow);for(const q of c.quotes||[]){const a=document.createElement('a');a.className='source-link';a.href=q.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(q.market==='snkr'?'スニダン':'メルカリ')+' '+money(q.price);info.append(a)}});};
+const oldGraph=renderGraph;renderGraph=function(){oldGraph();if(state.askingMode){$('graphContext').textContent='販売中最安値の観測履歴（'+detailRange+'日）';$('graphFoot').textContent='成約価格ではありません。確認できた市場の販売中最安値のみ。';if(recentDaily(cardBase(detailRecord),detailRange,detailRecord.asOfDate).length<2)$('graphPlot').textContent='観測点が2件以上になるとグラフを表示します。';}};
+render();
+
 })();
 </script>
 <!-- Cloudflare Pages Analytics --><script defer="" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;070d7cd10262479c9e5ee1e71d04058a&quot;}"></script><!-- Cloudflare Pages Analytics -->
