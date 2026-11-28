@@ -2689,7 +2689,7 @@ body.modal-open{overflow:hidden}
  <div class="container edit-inner">
   <div class="edit-header"><div><h2>🛠 運営者用・編集画面</h2><p>ここでの変更は公開サイトに直接反映されません。編集後に「公開用HTMLを保存」して再アップロードします。</p></div><button class="btn" id="exportBtn">⬇ 公開用HTMLを保存</button></div>
   <p class="admin-tip"><strong>安全上の注意：</strong>この画面はパスワード認証ではありません。ただし閲覧者が操作しても公開中のサーバーは書き換わりません。個人情報や秘密鍵は入力しないでください。</p>
-  <div class="edit-box" style="margin-top:16px"><h3>★ 人気TOP50・一括更新</h3><p>ChatGPTから受け取ったJSONを貼り付けます。初回・週次は50銘柄を入れ替え、毎日は同じ銘柄の販売中最安値を更新します。未確認は null。成約価格とは別集計です。</p><textarea id="bulkPrices" rows="8" style="width:100%;box-sizing:border-box" placeholder="JSONをここに貼り付け"></textarea><div class="edit-action"><button id="bulkReplace" type="button">50銘柄を入れ替え</button><button id="bulkUpdate" type="button">価格だけ更新</button></div><p id="bulkStatus" role="status"></p></div><div class="editor-grid">
+  <div class="edit-box" style="margin-top:16px"><h3>★ 人気TOP30・一括更新</h3><p>ChatGPTから受け取ったJSONを貼り付けます。毎日30銘柄を入れ替え、販売中最安値を更新します。未確認は null。成約価格とは別集計です。</p><textarea id="bulkPrices" rows="8" style="width:100%;box-sizing:border-box" placeholder="JSONをここに貼り付け"></textarea><div class="edit-action"><button id="bulkReplace" type="button">30銘柄を入れ替え</button><button id="bulkUpdate" type="button">価格だけ更新</button></div><p id="bulkStatus" role="status"></p></div><div class="editor-grid">
    <div class="edit-box">
     <h3>① カード相場・高騰ランキングを編集</h3>
     <div class="field-grid">
@@ -3103,8 +3103,8 @@ updatePhotoHelper();
 function bulkApply(replace){
  try{
  const b=JSON.parse($('bulkPrices').value), date=b.date;
- if(!validDateStr(date)||!Array.isArray(b.cards)||!b.cards.length||b.cards.length>50)throw Error('日付と1〜50銘柄が必要です');
- if(replace&&(b.cards.length!==50||!safeUrl(b.rankingUrl)||!String(b.rankingPeriod||'').trim()))throw Error('入れ替えには50銘柄・人気ランキング出典URL・集計期間が必要です');
+ if(!validDateStr(date)||!Array.isArray(b.cards)||!b.cards.length||b.cards.length>30)throw Error('日付と1〜30銘柄が必要です');
+ if(replace&&(b.cards.length!==30||!safeUrl(b.rankingUrl)||!String(b.rankingPeriod||'').trim()))throw Error('入れ替えには30銘柄・人気ランキング出典URL・集計期間が必要です');
  const seen=new Set(), old=new Map(state.cards.map(c=>[normalizedNumber(c.number),c]));
  const next=b.cards.map((v,i)=>{
  const key=normalizedNumber(v.number);if(!key||!String(v.name||'').trim()||seen.has(key))throw Error('カード名・番号の不足または重複：'+(i+1));seen.add(key);
@@ -3115,12 +3115,12 @@ function bulkApply(replace){
  history.sort((a,b)=>a.date.localeCompare(b.date));const past=history.find(x=>dayStamp(date)-dayStamp(x.date)===7*86400000);
  return {id:prior?.id||'top-'+key,name:String(v.name),number:String(v.number),grade:'PSA10',category:['トレーナーズ','ポケモン','その他'].includes(v.category)?v.category:'その他',imageUrl:prior?.imageUrl||'',imageType:prior?.imageType||'',imageSource:prior?.imageSource||'',rakutenImageHtml:prior?.rakutenImageHtml||'',verifiedPhoto:prior?.verifiedPhoto||'',priceMode:'asking',pricePast:past?.price??null,priceNow:best?.price??null,asOfDate:date,source:best?'販売中最安値（確認できた市場）':'未確認',sourceUrl:best?.url||'',dailyHistory:history,quotes,popularityRank:replace?i+1:prior.popularityRank};
  });
- if(replace&&!confirm('現在の銘柄を50銘柄に入れ替えますか？'))return;
+ if(replace&&!confirm('現在の銘柄を30銘柄に入れ替えますか？'))return;
  state.cards=replace?next:state.cards.map(c=>next.find(n=>n.id===c.id)||c);state.weeklyArchive=[];state.marketInfo={};state.askingMode=true;if(replace)state.popularity={url:safeUrl(b.rankingUrl),period:String(b.rankingPeriod)};selectedPeriod='latest';clearFields();render();updatePhotoHelper();$('bulkStatus').textContent='更新完了：'+next.length+'銘柄。公開用HTMLを保存してください。';$('bulkPrices').value='';
  }catch(e){$('bulkStatus').textContent='更新中止：'+e.message;}
 }
 $('bulkReplace').addEventListener('click',()=>bulkApply(true));$('bulkUpdate').addEventListener('click',()=>bulkApply(false));
-const oldRender=render;render=function(){oldRender();if(!state.askingMode)return; $('weekSelect').innerHTML='<option value="latest">最新確認分</option>'; $('market-description').textContent='人気50銘柄の販売中最安値。成約価格ではありません。変動率は7日前の観測値と比較。';$('market-status').textContent='手動調査・更新。未確認価格は表示しません。';$('market-datestamp').textContent='確認日 '+(state.cards.map(c=>c.asOfDate).sort().pop()||'未確認');document.querySelectorAll('.pane-head span')[2].textContent='販売中最安値';document.querySelectorAll('.pane-head span')[3].textContent='7日前';$('metric-priced').textContent=state.cards.filter(c=>c.priceNow>0).length+'件';$('watchlist').querySelectorAll('.watch-card').forEach((el,i)=>{const c=state.cards.filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter))[i];if(!c)return;const info=el.querySelector('.watch-info');const p=info.querySelector('p');if(p)p.textContent='人気 '+c.popularityRank+'位 / '+money(c.priceNow);for(const q of c.quotes||[]){const a=document.createElement('a');a.className='source-link';a.href=q.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(q.market==='snkr'?'スニダン':'メルカリ')+' '+money(q.price);info.append(a)}});};
+const oldRender=render;render=function(){oldRender();if(!state.askingMode)return; $('weekSelect').innerHTML='<option value="latest">最新確認分</option>'; $('market-description').textContent='人気30銘柄の販売中最安値。成約価格ではありません。変動率は7日前の観測値と比較。';$('market-status').textContent='手動調査・更新。未確認価格は表示しません。';$('market-datestamp').textContent='確認日 '+(state.cards.map(c=>c.asOfDate).sort().pop()||'未確認');document.querySelectorAll('.pane-head span')[2].textContent='販売中最安値';document.querySelectorAll('.pane-head span')[3].textContent='7日前';$('metric-priced').textContent=state.cards.filter(c=>c.priceNow>0).length+'件';$('watchlist').querySelectorAll('.watch-card').forEach((el,i)=>{const c=state.cards.filter(c=>(filter==='すべて'||c.category===filter)&&(`${c.name} ${c.number}`).toLowerCase().includes(textFilter))[i];if(!c)return;const info=el.querySelector('.watch-info');const p=info.querySelector('p');if(p)p.textContent='人気 '+c.popularityRank+'位 / '+money(c.priceNow);for(const q of c.quotes||[]){const a=document.createElement('a');a.className='source-link';a.href=q.url;a.target='_blank';a.rel='noopener noreferrer';a.textContent=(q.market==='snkr'?'スニダン':'メルカリ')+' '+money(q.price);info.append(a)}});};
 const oldGraph=renderGraph;renderGraph=function(){oldGraph();if(state.askingMode){$('graphContext').textContent='販売中最安値の観測履歴（'+detailRange+'日）';$('graphFoot').textContent='成約価格ではありません。確認できた市場の販売中最安値のみ。';if(recentDaily(cardBase(detailRecord),detailRange,detailRecord.asOfDate).length<2)$('graphPlot').textContent='観測点が2件以上になるとグラフを表示します。';}};
 render();
 
